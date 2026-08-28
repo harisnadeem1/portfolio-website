@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  body {
+    font-family: 'Exo', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Exo', sans-serif;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Prevent long words/URLs from forcing horizontal overflow on small screens */
+h1, h2, h3, h4, h5, p, li, dd, dt, span, a {
+  overflow-wrap: break-word;
+}
+
+img, video, svg, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: hsl(17 59% 49% / 0.26);
+  color: hsl(240 6% 10%);
+}
+
+/*
+  ---break---
+*/
+
+@layer base {
+  :root {
+    /* Ink & copper editorial palette */
+    --background: 42 28% 93%;          /* warm paper #F2EFE8 */
+    --foreground: 240 6% 10%;          /* ink #18181B */
+    --card: 42 28% 93%;                /* warm paper */
+    --card-foreground: 240 6% 10%;     /* ink */
+    --popover: 42 28% 93%;             /* warm paper */
+    --popover-foreground: 240 6% 10%;  /* ink */
+    --primary: 17 59% 49%;             /* copper #C65D32 */
+    --primary-foreground: 42 28% 93%;  /* warm paper */
+    --secondary: 37 24% 87%;           /* soft sand #E6E0D6 */
+    --secondary-foreground: 240 6% 10%;/* ink */
+    --muted: 37 24% 87%;               /* soft sand */
+    --muted-foreground: 30 12% 28%; /* deeper warm charcoal, approximately #514941 */
+    --accent: 37 24% 87%;              /* soft sand */
+    --accent-foreground: 240 6% 10%;   /* ink */
+    --destructive: 8 70% 45%;          /* warm terracotta (errors) */
+    --destructive-foreground: 42 28% 93%;
+    --border: 37 18% 80%;              /* dusty stone #D4CDC2 */
+    --input: 37 18% 80%;               /* dusty stone */
+    --ring: 17 59% 49%;                /* copper */
+    --radius: 0.75rem;
+    --sidebar-background: 37 24% 87%;
+    --sidebar-foreground: 240 6% 10%;
+    --sidebar-primary: 17 59% 49%;
+    --sidebar-primary-foreground: 42 28% 93%;
+    --sidebar-accent: 37 24% 87%;
+    --sidebar-accent-foreground: 240 6% 10%;
+    --sidebar-border: 37 18% 80%;
+    --sidebar-ring: 17 59% 49%;
+  }
+  .dark {
+    /* Ink ground, paper text, copper accent */
+    --background: 240 6% 10%;          /* ink #18181B */
+    --foreground: 42 28% 93%;          /* warm paper #F2EFE8 */
+    --card: 240 6% 10%;
+    --card-foreground: 42 28% 93%;
+    --popover: 240 6% 10%;
+    --popover-foreground: 42 28% 93%;
+    --primary: 17 59% 49%;             /* copper */
+    --primary-foreground: 42 28% 93%;
+    --secondary: 240 4% 18%;
+    --secondary-foreground: 42 28% 93%;
+    --muted: 240 4% 18%;
+    --muted-foreground: 37 12% 62%;
+    --accent: 240 4% 18%;
+    --accent-foreground: 42 28% 93%;
+    --destructive: 8 70% 45%;
+    --destructive-foreground: 42 28% 93%;
+    --border: 240 4% 22%;
+    --input: 240 4% 22%;
+    --ring: 17 59% 49%;
+    --sidebar-background: 240 6% 10%;
+    --sidebar-foreground: 42 28% 93%;
+    --sidebar-primary: 17 59% 49%;
+    --sidebar-primary-foreground: 42 28% 93%;
+    --sidebar-accent: 240 4% 18%;
+    --sidebar-accent-foreground: 42 28% 93%;
+    --sidebar-border: 240 4% 22%;
+    --sidebar-ring: 17 59% 49%;
+  }
+}
+
+@layer utilities {
+  /* Subtle warm grid used inside empty project image slots */
+  .placeholder-grid {
+    background-image:
+      linear-gradient(to right, hsl(37 18% 80% / 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(37 18% 80% / 0.55) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
