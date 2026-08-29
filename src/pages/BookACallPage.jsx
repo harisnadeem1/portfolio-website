@@ -182,14 +182,14 @@ export default function BookACallPage() {
     return (
         <>
             <Helmet>
-                <title>Book a Free Call — Your Name</title>
+                <title>Book a Free Call — Haris Nadeem</title>
                 <meta
                     name="description"
                     content="Book a free discovery call to discuss your website, web application, e-commerce store, automation, AI feature, or payment integration."
                 />
             </Helmet>
 
-            <section className="container max-w-6xl pb-32 pt-24 md:pt-32">
+            <section className="container max-w-7xl pb-32 pt-24 md:pt-32">
                 {/* Page header */}
                 <Reveal>
                     <p className="text-xs font-medium uppercase tracking-widest text-primary">

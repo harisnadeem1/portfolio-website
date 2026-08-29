@@ -16,14 +16,14 @@ export default function WorkPage() {
     return (
         <>
             <Helmet>
-                <title>Work — Your Name</title>
+                <title>Work — Haris Nadeem</title>
                 <meta
                     name="description"
-                    content="Selected projects by Your Name — web applications, websites, e-commerce, and automation work."
+                    content="Selected projects by Haris Nadeem — web applications, websites, e-commerce, and automation work."
                 />
             </Helmet>
 
-            <section className="container max-w-6xl pb-32 pt-24 md:pt-32">
+            <section className="container max-w-7xl pb-32 pt-24 md:pt-32">
                 <Reveal>
                     <h1 className="text-[clamp(2.25rem,7vw,4.5rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
                         Work

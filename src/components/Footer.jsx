@@ -1,11 +1,31 @@
 import React from 'react';
 import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+
+const FooterLogo = () => (
+    <Link
+        to="/"
+        className="group flex items-baseline gap-[2px] font-display text-xl font-semibold tracking-tight text-[#F2EFE8] transition-opacity hover:opacity-80"
+        aria-label="Muhammad Haris Nadeem — Home"
+    >
+        <span className="font-mono text-primary transition-colors group-hover:text-primary-dark">
+            &lt;
+        </span>
+        Muhammad&nbsp;Haris&nbsp;Nadeem
+        <span className="font-mono text-primary transition-colors group-hover:text-primary-dark">
+            /&gt;
+        </span>
+    </Link>
+);
+
 
 /* ── EDIT: your contact details and social links ────────── */
-const email = 'hello@yourname.com';
+const email = 'nadeemharis781@gmail.com';
+const phone = '+92 327 0701833';
 const socials = [
-    { label: 'GitHub', href: 'https://github.com/yourusername', icon: Github },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/yourusername', icon: Linkedin },
+    { label: 'GitHub', href: 'https://github.com/harisnadeem1', icon: Github },
+    { label: 'LinkedIn',  href: 'https://linkedin.com/in/muhammad-haris-nadeem-cs', icon: Linkedin },
 ];
 
 export default function Footer() {
@@ -13,18 +33,30 @@ export default function Footer() {
 
     return (
         <footer className="border-t border-[#2B2B2E] bg-[#18181B]">
-            <div className="container max-w-6xl py-12 md:py-16">
+            <div className="container max-w-7xl py-12 md:py-16">
                 <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
                     <div className="max-w-xs">
-                        <p className="text-lg font-semibold tracking-tight text-[#F2EFE8]">
-                            yourname<span className="text-primary">.</span>
-                        </p>
+                        <FooterLogo />
                         <p className="mt-3 text-sm leading-relaxed text-[#F2EFE8]/70">
-                            Full-Stack Developer building clean, reliable digital products.
+                           Web applications, intelligent automation, and custom software for teams ready to move forward.
                         </p>
                     </div>
 
                     <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
+                         {/* Phone */}
+                        <div>
+                            <p className="text-xs font-medium uppercase tracking-widest text-[#F2EFE8]/60">
+                                Phone
+                            </p>
+
+                            <a
+                                href="tel:+923270701833"
+                                className="group mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#F2EFE8] transition-colors hover:text-primary"
+                            >
+                                {phone}
+                                <ArrowUpRight className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                            </a>
+                        </div>
                         <div>
                             <p className="text-xs font-medium uppercase tracking-widest text-[#F2EFE8]/60">
                                 Email
@@ -62,8 +94,8 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-12 flex flex-col gap-2 border-t border-[#2B2B2E] pt-6 text-xs text-[#F2EFE8]/55 sm:flex-row sm:items-center sm:justify-between">
-                    <p>© {year} Your Name. All rights reserved.</p>
-                    <p>Designed &amp; built by Your Name</p>
+                    <p>© {year} Haris Nadeem. All rights reserved.</p>
+                    <p>Designed &amp; built by Haris Nadeem</p>
                 </div>
             </div>
         </footer>

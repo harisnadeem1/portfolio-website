@@ -25,10 +25,10 @@ export default function ProjectDetailPage() {
         return (
             <>
                 <Helmet>
-                    <title>Project Not Found — Your Name</title>
+                    <title>Project Not Found — Haris Nadeem</title>
                     <meta name="description" content="This project could not be found." />
                 </Helmet>
-                <section className="container max-w-6xl py-32 text-center">
+                <section className="container max-w-7xl py-32 text-center">
                     <h1 className="text-3xl font-semibold tracking-tight text-foreground">
                         Project not found
                     </h1>
@@ -52,11 +52,11 @@ export default function ProjectDetailPage() {
     return (
         <>
             <Helmet>
-                <title>{`${project.title} — Your Name`}</title>
+                <title>{`${project.title} — Haris Nadeem`}</title>
                 <meta name="description" content={project.description} />
             </Helmet>
 
-            <article className="container max-w-6xl pb-32 pt-16 md:pt-24">
+            <article className="container max-w-7xl pb-32 pt-16 md:pt-24">
                 <Reveal>
                     <Link
                         to="/work"

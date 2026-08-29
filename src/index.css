@@ -124,3 +124,32 @@ img, video, svg, canvas {
     background-size: 28px 28px;
   }
 }
+
+
+
+.tool-pill-reflective {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    cursor: default;
+}
+
+.tool-pill-reflective::before {
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    opacity: 0;
+    background: radial-gradient(
+        80px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(198, 93, 50, 0.20),
+        rgba(198, 93, 50, 0.07) 35%,
+        transparent 70%
+    );
+    transition: opacity 180ms ease;
+}
+
+.tool-pill-reflective:hover::before {
+    opacity: 1;
+}

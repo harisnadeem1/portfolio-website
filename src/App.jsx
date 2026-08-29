@@ -12,9 +12,9 @@ import BookACallPage from './pages/BookACallPage';
 
 function NotFoundPage() {
     return (
-        <section className="container max-w-6xl py-32 text-center">
+        <section className="container max-w-7xl py-32 text-center">
             <Helmet>
-                <title>Page Not Found — Your Name</title>
+                <title>Page Not Found — Haris Nadeem</title>
                 <meta name="description" content="The page you are looking for could not be found." />
             </Helmet>
             <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">404</p>

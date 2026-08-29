@@ -27,7 +27,7 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validate(values) {
     const errors = {};
-    if (!values.name.trim()) errors.name = 'Please enter your name.';
+    if (!values.name.trim()) errors.name = 'Please enter Haris Nadeem.';
     if (!values.email.trim()) {
         errors.email = 'Please enter your email address.';
     } else if (!emailPattern.test(values.email.trim())) {
@@ -77,14 +77,14 @@ export default function ContactPage() {
     return (
         <>
             <Helmet>
-                <title>Contact — Your Name</title>
+                <title>Contact — Haris Nadeem</title>
                 <meta
                     name="description"
-                    content="Get in touch with Your Name — available for freelance projects, collaborations, and full-time opportunities."
+                    content="Get in touch with Haris Nadeem — available for freelance projects, collaborations, and full-time opportunities."
                 />
             </Helmet>
 
-            <section className="container max-w-6xl pb-32 pt-24 md:pt-32">
+            <section className="container max-w-7xl pb-32 pt-24 md:pt-32">
                 <div className="grid gap-20 lg:grid-cols-2 lg:gap-24">
                     {/* Left: heading + contact links */}
                     <div>
@@ -168,7 +168,7 @@ export default function ContactPage() {
                                                     id="name"
                                                     type="text"
                                                     autoComplete="name"
-                                                    placeholder="Your name"
+                                                    placeholder="Haris Nadeem"
                                                     value={values.name}
                                                     onChange={handleChange('name')}
                                                     aria-invalid={Boolean(errors.name)}
