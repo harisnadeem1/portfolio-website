@@ -66,7 +66,7 @@ const pipelineStages = [
         num: '02',
         title: 'Application Logic',
         desc: 'Reliable backend APIs, real-time features, and business logic designed to support practical product workflows.',
-        tools: ['Node.js', 'Express.js', 'REST APIs', 'WebSockets'],
+        tools: ['Node.js', 'Express.js',  'Python', 'REST APIs', 'WebSockets'],
     },
     {
         num: '03',
@@ -126,12 +126,15 @@ export default function HomePage() {
 
                         <Reveal delay={0.16}>
                             <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-                                I build thoughtful web experiences that combine clean interfaces,
-                                dependable engineering, and practical solutions for real businesses.
+                                <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+    I build thoughtful web experiences that combine clean interfaces,
+    dependable engineering, and practical solutions for real businesses.
+    I’ve delivered 70+ web and software projects for clients across Europe
+    and beyond.
+</p>
                             </p>
                         </Reveal>
 
-                        <Reveal delay={0.24}>
                             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
                                 <Link
                                     to="/work"
@@ -148,7 +151,6 @@ export default function HomePage() {
                                     Get in touch
                                 </Link>
                             </div>
-                        </Reveal>
 
                         <Reveal delay={0.32}>
                             <div className="mt-4 flex flex-wrap items-center gap-x-7 gap-y-3  pt-6 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-xs">
@@ -197,7 +199,7 @@ export default function HomePage() {
                                 }}
                             >
                                 <img
-                                    src="/profile.jpg"
+                                    src="/profile-1.jpg"
                                     alt="Haris Nadeem, full-stack developer"
                                     className="h-full w-full object-cover object-center grayscale-[12%] transition duration-700 hover:scale-105 hover:grayscale-0"
                                 />
@@ -230,7 +232,7 @@ export default function HomePage() {
                     <Reveal>
                         <div className="flex items-end justify-between gap-6">
                             <div>
-                                <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+                                <p className="text-sm font-semibold uppercase tracking-widest text-primary">
                                     01 — Selected Work
                                 </p>
                                 <h2 className="mt-4 text-[clamp(2rem,5vw,3rem)] font-semibold tracking-tight text-foreground">
@@ -296,7 +298,7 @@ export default function HomePage() {
                                         </ul>
                                         <Link
                                             to={`/work/${project.slug}`}
-                                            className="group mt-7 inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                                            className="group mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
                                         >
                                             View Case Study
                                             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -325,7 +327,7 @@ export default function HomePage() {
             <section className="border-y border-border bg-secondary/50">
                 <div className="container max-w-7xl py-24 md:py-24">
                     <Reveal>
-                        <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+                        <p className="text-sm font-semibold uppercase tracking-widest text-primary">
                             02 — What I Build
                         </p>
                         <h2 className="mt-4 max-w-2xl text-[clamp(2rem,5vw,3rem)] leading-[0.98] font-semibold tracking-tight text-foreground">
@@ -360,7 +362,7 @@ export default function HomePage() {
             <section className="border-t border-border">
                 <div className="container max-w-7xl py-24 md:py-24">
                     <Reveal>
-                        <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+                        <p className="text-sm font-semibold uppercase tracking-widest text-primary">
                             03 — From Idea to Launch
                         </p>
                         <h2 className="mt-4 max-w-2xl text-[clamp(2rem,5vw,3rem)] leading-[0.98] font-semibold tracking-tight text-foreground">
@@ -458,7 +460,7 @@ export default function HomePage() {
                     <div className="grid gap-10 md:grid-cols-12 md:gap-12">
                         {/* Left: label + editorial image */}
                         <Reveal className="md:col-span-4">
-                            <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+                            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
                                 04 — About
                             </p>
 
@@ -494,7 +496,7 @@ export default function HomePage() {
                                     }}
                                 >
                                     <img
-                                        src="/about.jpeg"
+                                        src="/about-3.png"
                                         alt="Muhammad Haris Nadeem working on a software project"
                                         className="h-full w-full object-cover object-center grayscale-[12%] transition duration-700 hover:scale-105 hover:grayscale-0"
                                     />
@@ -536,7 +538,7 @@ export default function HomePage() {
                             <Reveal delay={0.16}>
                                 <Link
                                     to="/contact"
-                                    className="group mt-8 inline-flex items-center gap-1.5 text-base font-medium text-primary transition-colors hover:text-primary/80"
+                                    className="group mt-8 inline-flex items-center gap-1.5 text-base font-semibold text-primary transition-colors hover:text-primary/80"
                                 >
                                     Let’s work together
                                     <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -551,7 +553,7 @@ export default function HomePage() {
            <section className="border-t border-border bg-secondary/50">
     <div className="container max-w-7xl py-28 text-center md:py-36">
         <Reveal>
-            <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
                 05 — Next Step
             </p>
 
@@ -569,7 +571,7 @@ export default function HomePage() {
         <Reveal delay={0.12}>
             <Link
                 to="/contact"
-                className="group mt-10 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
+                className="group mt-10 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
             >
                 Send a Message
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />

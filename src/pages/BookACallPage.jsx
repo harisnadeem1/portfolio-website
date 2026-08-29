@@ -8,12 +8,19 @@ import {
     Clock,
     Globe,
     ArrowRight,
+    FileSearch,
+    MessagesSquare,
+    Rocket,
+    Video,
+    ShieldCheck,
+    CalendarCheck,
 } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import { cn } from '@/lib/utils';
+import emailjs from '@emailjs/browser';
 
 /* ── EDIT: timezone placeholder ─────────────────────────── */
-const TIMEZONE_PLACEHOLDER = 'Pakistan Standard Time (PKT)';
+const TIMEZONE_PLACEHOLDER = 'Central European Time (CET/CEST)';
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTHS = [
@@ -30,17 +37,37 @@ const TIME_SLOTS = [
 ];
 
 /* Sample unavailable slot indexes (design only) */
-const UNAVAILABLE_SLOT_INDEXES = new Set([1, 4, 7, 9, 12]);
+const UNAVAILABLE_SLOT_INDEXES = new Set();
 
 const MEETING_TYPES = [
-    { value: 'none', label: 'Select a meeting type' },
-    { value: 'website', label: 'Website' },
-    { value: 'web-app', label: 'Web Application' },
+    { value: 'none', label: 'Select what you need help with' },
+    { value: 'website', label: 'Business Website or Landing Page' },
+    { value: 'web-app', label: 'Custom Web Application / SaaS' },
     { value: 'ecommerce', label: 'E-commerce Store' },
-    { value: 'automation', label: 'Automation / Integration' },
-    { value: 'ai-feature', label: 'AI Feature' },
-    { value: 'payment', label: 'Payment Integration' },
-    { value: 'other', label: 'Other Technical Requirement' },
+    { value: 'dashboard', label: 'Admin Dashboard or Internal Tool' },
+    { value: 'automation', label: 'Workflow Automation or API Integration' },
+    { value: 'ai-feature', label: 'AI Feature or AI-Powered Workflow' },
+    { value: 'payments', label: 'Payments, Subscriptions, or Checkout' },
+    { value: 'maintenance', label: 'Improve, Fix, or Maintain an Existing App' },
+    { value: 'other', label: 'Something Else' },
+];
+
+const NEXT_STEPS = [
+    {
+        title: 'I review your project',
+        description:
+            'I’ll review your goals, requirements, and any links or details you shared before our call.',
+    },
+    {
+        title: 'We plan the solution',
+        description:
+            'On the call, we’ll discuss the right features, technology stack, timeline, and the best way to solve your problem.',
+    },
+    {
+        title: 'We start with clarity',
+        description:
+            'If we are a good fit, I’ll share clear next steps, scope, and a development plan to move your project forward.',
+    },
 ];
 
 const initialValues = {
@@ -71,9 +98,9 @@ function isSameDay(a, b) {
 }
 
 /* Sample availability rule (design only): weekends unavailable */
-function isSampleUnavailable(date) {
-    const day = date.getDay();
-    return day === 0 || day === 6;
+/* All future dates are available */
+function isSampleUnavailable() {
+    return false;
 }
 
 function validate(values, hasSlot) {
@@ -107,6 +134,8 @@ export default function BookACallPage() {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
     const [confirmed, setConfirmed] = useState(false);
+    const [isSending, setIsSending] = useState(false);
+const [submitError, setSubmitError] = useState('');
 
     const handleChange = (field) => (e) => {
         const value = field === 'consent' ? e.target.checked : e.target.value;
@@ -159,15 +188,69 @@ export default function BookACallPage() {
 
     const hasSlot = Boolean(selectedDate && selectedTime);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const nextErrors = validate(values, hasSlot);
-        setErrors(nextErrors);
-        if (Object.keys(nextErrors).length === 0) {
-            // UI-only confirmation — no email, no backend, no data saved.
-            setConfirmed(true);
-        }
-    };
+   const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const nextErrors = validate(values, hasSlot);
+  setErrors(nextErrors);
+  setSubmitError('');
+
+  if (Object.keys(nextErrors).length > 0) return;
+
+  const formattedDate = selectedDate.toLocaleDateString('en-GB', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
+  const selectedType = MEETING_TYPES.find(
+    (type) => type.value === values.meetingType
+  );
+
+  const templateParams = {
+    client_name: values.name.trim(),
+    client_email: values.email.trim(),
+    company: values.company.trim() || 'Not provided',
+    subject: values.subject.trim(),
+    meeting_type: selectedType?.label || values.meetingType,
+    project_details: values.details.trim() || 'Not provided',
+    meeting_date: formattedDate,
+    meeting_time: selectedTime,
+    timezone: values.timezone,
+    submitted_at: new Date().toLocaleString('en-GB', {
+      dateStyle: 'medium',
+      timeStyle: 'short',
+    }),
+  };
+
+  try {
+    setIsSending(true);
+
+    await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      templateParams,
+      {
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      }
+    );
+
+    setConfirmed(true);
+ } catch (error) {
+  console.error('EmailJS booking request error:', {
+    status: error.status,
+    text: error.text,
+    fullError: error,
+  });
+
+  setSubmitError(
+    'Your request could not be sent right now. Please try again in a moment.'
+  );
+} finally {
+    setIsSending(false);
+  }
+};
 
     const handleReset = () => {
         setValues(initialValues);
@@ -182,27 +265,91 @@ export default function BookACallPage() {
     return (
         <>
             <Helmet>
-                <title>Book a Free Call — Haris Nadeem</title>
+                <title>Book a Free Call — Haris Nadeem | Full-Stack Developer</title>
                 <meta
                     name="description"
                     content="Book a free discovery call to discuss your website, web application, e-commerce store, automation, AI feature, or payment integration."
                 />
             </Helmet>
 
-            <section className="container max-w-7xl pb-32 pt-24 md:pt-32">
+            <section className="container max-w-7xl pb-32 pt-24 md:pt-12">
                 {/* Page header */}
                 <Reveal>
-                    <p className="text-xs font-medium uppercase tracking-widest text-primary">
-                        Free Discovery Call
-                    </p>
-                    <h1 className="mt-4 text-[clamp(2.25rem,6vw,3.75rem)] font-semibold leading-[1.06] tracking-tight text-foreground">
-                        Book a time to talk.
-                    </h1>
-                    <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                        Choose a suitable date and time for a short online meeting. We can
-                        discuss your website, web application, e-commerce store, automation,
-                        AI feature, payment integration, or technical requirement.
-                    </p>
+                    <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_412px] lg:gap-16">
+                        {/* Left: Hero content */}
+                        <div>
+                            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                                Free Discovery Call
+                            </p>
+
+                            <h1 className="mt-4 max-w-2xl text-[clamp(2.25rem,6vw,3.75rem)] font-semibold leading-[1.06] tracking-tight text-foreground">
+                                Let’s turn your idea into a working product.
+                            </h1>
+
+                            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                                Book a free 30-minute call to discuss what you want to build, improve,
+                                or automate. Whether you need a high-converting website, a custom web
+                                application, an internal dashboard, an e-commerce store, API
+                                integration, or an AI-powered feature, we’ll clarify the best next
+                                steps for your project.
+                            </p>
+
+
+                        </div>
+
+                        {/* Right: Helpful call information */}
+                        <aside className="relative overflow-hidden rounded-2xl border border-border bg-secondary/40 p-6 md:p-7">
+                            <div
+                                aria-hidden="true"
+                                className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-primary/10 blur-2xl"
+                            />
+
+                            <div className="relative">
+                                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                                    Discovery call
+                                </p>
+
+                                <h2 className="mt-3 text-2xl font-semibold leading-tight tracking-tight text-foreground">
+                                    A focused conversation about your project.
+                                </h2>
+
+                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                    Bring your idea, challenge, or existing product. You do not need a
+                                    finished brief before we talk.
+                                </p>
+
+                                <dl className="mt-6 divide-y divide-border border-y border-border">
+                                    <div className="flex items-center justify-between gap-4 py-3">
+                                        <dt className="text-sm text-muted-foreground">Format</dt>
+                                        <dd className="text-right text-sm font-medium text-foreground">
+                                            Online meeting
+                                        </dd>
+                                    </div>
+
+                                    <div className="flex items-center justify-between gap-4 py-3">
+                                        <dt className="text-sm text-muted-foreground">Duration</dt>
+                                        <dd className="text-right text-sm font-medium text-foreground">
+                                            30 minutes
+                                        </dd>
+                                    </div>
+
+                                    <div className="flex items-center justify-between gap-4 py-3">
+                                        <dt className="text-sm text-muted-foreground">Cost</dt>
+                                        <dd className="text-right text-sm font-medium text-foreground">
+                                            Free
+                                        </dd>
+                                    </div>
+
+                                    <div className="flex items-center justify-between gap-4 py-3">
+                                        <dt className="text-sm text-muted-foreground">Commitment</dt>
+                                        <dd className="text-right text-sm font-medium text-foreground">
+                                            No obligation
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </aside>
+                    </div>
                 </Reveal>
 
                 <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
@@ -274,13 +421,13 @@ export default function BookACallPage() {
                                                 className={cn(
                                                     'flex aspect-square items-center justify-center rounded-lg text-sm font-medium transition-colors',
                                                     selected &&
-                                                        'bg-primary text-primary-foreground hover:bg-primary/90',
+                                                    'bg-primary text-primary-foreground hover:bg-primary/90',
                                                     !selected &&
-                                                        !disabled &&
-                                                        'text-foreground hover:border hover:border-foreground/25 hover:bg-secondary',
+                                                    !disabled &&
+                                                    'text-foreground hover:border hover:border-foreground/25 hover:bg-secondary',
                                                     !selected &&
-                                                        isToday &&
-                                                        'ring-1 ring-inset ring-primary/50',
+                                                    isToday &&
+                                                    'ring-1 ring-inset ring-primary/50',
                                                     disabled && 'cursor-not-allowed text-muted-foreground/35 line-through'
                                                 )}
                                             >
@@ -310,9 +457,9 @@ export default function BookACallPage() {
                             <div className="rounded-2xl border border-border bg-background p-5 md:p-7">
                                 <div className="flex items-center justify-between gap-4">
                                     <h2 className="text-lg font-semibold tracking-tight text-foreground">
-                                        Time
+                                        Choose a time
                                     </h2>
-                                    <span className="text-xs text-muted-foreground">30-minute slots</span>
+                                    <span className="text-xs text-muted-foreground">30-minute online call</span>
                                 </div>
 
                                 {/* Timezone */}
@@ -322,7 +469,7 @@ export default function BookACallPage() {
                                         className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground"
                                     >
                                         <Globe className="h-3.5 w-3.5" strokeWidth={2} />
-                                        Timezone
+                                        Your timezone
                                     </label>
                                     <input
                                         id="timezone"
@@ -349,12 +496,12 @@ export default function BookACallPage() {
                                                 className={cn(
                                                     'inline-flex h-11 items-center justify-center rounded-lg border text-sm font-medium transition-colors',
                                                     selected &&
-                                                        'border-primary bg-primary text-primary-foreground hover:bg-primary/90',
+                                                    'border-primary bg-primary text-primary-foreground hover:bg-primary/90',
                                                     !selected &&
-                                                        !unavailable &&
-                                                        'border-border text-foreground hover:border-foreground/25 hover:bg-secondary active:scale-[0.98]',
+                                                    !unavailable &&
+                                                    'border-border text-foreground hover:border-foreground/25 hover:bg-secondary active:scale-[0.98]',
                                                     unavailable &&
-                                                        'cursor-not-allowed border-border bg-secondary text-muted-foreground/40 line-through'
+                                                    'cursor-not-allowed border-border bg-secondary text-muted-foreground/40 line-through'
                                                 )}
                                             >
                                                 {slot}
@@ -403,12 +550,14 @@ export default function BookACallPage() {
                                         <CheckCircle2 className="h-7 w-7 text-primary" strokeWidth={1.75} />
                                     </span>
                                     <h2 className="mt-6 text-2xl font-semibold tracking-tight text-foreground">
-                                        Your meeting request is ready to confirm.
-                                    </h2>
-                                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                                        Here is a summary of your request. No emails or calendar
-                                        invites have been sent yet.
-                                    </p>
+  Your call request has been sent.
+</h2>
+
+<p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+  Thanks for reaching out. A confirmation with your request details has been
+  sent to your email address. I’ll review everything and reply to confirm the
+  meeting time or suggest the closest available alternative.
+</p>
 
                                     <dl className="mt-8 divide-y divide-border border-y border-border">
                                         <SummaryRow icon={<CalendarDays className="h-4 w-4" />} label="Date" value={selectedDate.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })} />
@@ -420,17 +569,16 @@ export default function BookACallPage() {
                                     </dl>
 
                                     {/* Editable note */}
-                                    <div className="mt-6 rounded-xl border border-dashed border-border bg-secondary/40 p-4">
-                                        <label htmlFor="confirm-note" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                                            Note
-                                        </label>
-                                        <textarea
-                                            id="confirm-note"
-                                            rows={2}
-                                            defaultValue="Email confirmation and calendar invite will be enabled soon."
-                                            className="mt-2 w-full resize-none rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/15"
-                                        />
-                                    </div>
+                                  <div className="mt-6 rounded-xl border border-dashed border-border bg-secondary/40 p-4">
+  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+    What happens next
+  </p>
+
+  <p className="mt-2 text-sm leading-relaxed text-foreground">
+    I’ll review your project details and contact you by email with the final
+    confirmation and online meeting link.
+  </p>
+</div>
 
                                     <button
                                         type="button"
@@ -443,10 +591,10 @@ export default function BookACallPage() {
                             ) : (
                                 <form onSubmit={handleSubmit} noValidate>
                                     <h2 className="text-xl font-semibold tracking-tight text-foreground">
-                                        Booking details
+                                        Tell me about your project
                                     </h2>
                                     <p className="mt-2 text-sm text-muted-foreground">
-                                        Fields marked * are required.
+                                        Share the essentials below. I’ll review your request before the call so we can use our time well.
                                     </p>
 
                                     <div className="mt-8 space-y-6">
@@ -518,7 +666,7 @@ export default function BookACallPage() {
 
                                         <div className="space-y-2">
                                             <label htmlFor="bk-type" className="text-sm font-medium text-foreground">
-                                                Meeting type *
+                                                What would you like to build or improve? *
                                             </label>
                                             <div className="relative">
                                                 <select
@@ -548,12 +696,12 @@ export default function BookACallPage() {
                                         <div className="space-y-2">
                                             <label htmlFor="bk-details" className="text-sm font-medium text-foreground">
                                                 Brief project details{' '}
-                                                <span className="font-normal text-muted-foreground">(optional)</span>
+                                                <span className="font-normal text-muted-foreground">(optional, but helpful)</span>
                                             </label>
                                             <textarea
                                                 id="bk-details"
                                                 rows={4}
-                                                placeholder="Share a few details about your project, timeline, or goals…"
+                                                placeholder="What problem are you solving? Include your goals, key features, preferred timeline, existing website/app link, and anything else that would help."
                                                 value={values.details}
                                                 onChange={handleChange('details')}
                                                 className={cn(inputClass(false), 'resize-none')}
@@ -570,7 +718,7 @@ export default function BookACallPage() {
                                                     className="mt-0.5 h-5 w-5 shrink-0 rounded border-border text-primary outline-none focus:ring-2 focus:ring-primary/15"
                                                 />
                                                 <span className="text-sm leading-relaxed text-foreground">
-                                                    I agree to receive booking details by email.
+                                                    I agree to receive meeting details by email.
                                                 </span>
                                             </label>
                                             {errors.consent && (
@@ -579,12 +727,24 @@ export default function BookACallPage() {
                                         </div>
 
                                         <button
-                                            type="submit"
-                                            className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
-                                        >
-                                            Confirm free meeting
-                                            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                                        </button>
+  type="submit"
+  disabled={isSending}
+  className={cn(
+    'group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]',
+    isSending && 'cursor-not-allowed opacity-70'
+  )}
+>
+  {isSending ? 'Sending request…' : 'Request a free discovery call'}
+
+  {!isSending && (
+    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+  )}
+</button>
+{submitError && (
+  <p role="alert" className="text-center text-sm text-destructive">
+    {submitError}
+  </p>
+)}
                                     </div>
                                 </form>
                             )}
@@ -594,25 +754,83 @@ export default function BookACallPage() {
 
                 {/* What happens next */}
                 <Reveal delay={0.1}>
-                    <div className="mt-16 rounded-2xl border border-border bg-secondary/40 p-6 md:mt-20 md:p-8">
-                        <h2 className="text-lg font-semibold tracking-tight text-foreground">
-                            What happens next?
-                        </h2>
-                        <ol className="mt-6 grid gap-6 sm:grid-cols-3">
-                            {[
-                                'Choose a preferred time.',
-                                'Share a few details about your project.',
-                                'You will receive a confirmation and online meeting link once booking integration is enabled.',
-                            ].map((step, idx) => (
-                                <li key={idx} className="flex gap-4">
-                                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-background text-sm font-semibold text-primary">
-                                        {idx + 1}
-                                    </span>
-                                    <p className="pt-1.5 text-sm leading-relaxed text-muted-foreground">{step}</p>
-                                </li>
-                            ))}
-                        </ol>
-                    </div>
+                    <section className="relative mt-16 overflow-hidden rounded-2xl border border-border bg-secondary/40 p-6 md:mt-20 md:p-8 lg:p-10">
+                        {/* Decorative background accent */}
+                        <div
+                            aria-hidden="true"
+                            className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/10 blur-3xl"
+                        />
+
+                        <div className="relative">
+                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                                Simple, collaborative process
+                            </p>
+
+                            <div className="mt-3 max-w-2xl">
+                                <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+                                    What happens after you request a call?
+                                </h2>
+
+                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                                    I’ll make sure we use the call to understand your idea, find the
+                                    right technical approach, and decide on the most practical next step.
+                                </p>
+                            </div>
+
+                            <ol className="relative mt-8 grid gap-4 md:grid-cols-3 md:gap-5">
+                                {[
+                                    {
+                                        icon: FileSearch,
+                                        step: '01',
+                                        title: 'I review your project',
+                                        description:
+                                            'I’ll review your goals, requirements, and any links or details you shared before our call.',
+                                    },
+                                    {
+                                        icon: MessagesSquare,
+                                        step: '02',
+                                        title: 'We plan the solution',
+                                        description:
+                                            'On the call, we’ll discuss the right features, technology stack, timeline, and the best way to solve your problem.',
+                                    },
+                                    {
+                                        icon: Rocket,
+                                        step: '03',
+                                        title: 'We start with clarity',
+                                        description:
+                                            'If we are a good fit, I’ll share clear next steps, scope, and a development plan to move your project forward.',
+                                    },
+                                ].map(({ icon: Icon, step, title, description }) => (
+                                    <li
+                                        key={step}
+                                        className="group relative rounded-xl border border-border bg-background/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-lg hover:shadow-primary/5"
+                                    >
+                                        <div className="flex items-start justify-between gap-4">
+                                            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                                                <Icon className="h-5 w-5" strokeWidth={1.8} />
+                                            </span>
+
+                                            <span className="text-xs font-semibold tracking-wider text-muted-foreground">
+                                                {step}
+                                            </span>
+                                        </div>
+
+                                        <h3 className="mt-5 text-base font-semibold tracking-tight text-foreground">
+                                            {title}
+                                        </h3>
+
+                                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                                            {description}
+                                        </p>
+                                    </li>
+                                ))}
+                            </ol>
+
+                            <p className="mt-7 text-center text-sm text-muted-foreground">
+                                No pressure—this call is simply a chance to see whether we are a good fit.
+                            </p>
+                        </div>
+                    </section>
                 </Reveal>
             </section>
         </>
