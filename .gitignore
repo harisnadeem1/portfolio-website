@@ -215,6 +215,7 @@ csx/
 
 tree.ps1
 project-tree.txt
+.env
 
 # Microsoft Azure Emulator
 ecf/
