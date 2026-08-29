@@ -66,7 +66,7 @@ const pipelineStages = [
         num: '02',
         title: 'Application Logic',
         desc: 'Reliable backend APIs, real-time features, and business logic designed to support practical product workflows.',
-        tools: ['Node.js', 'Express.js',  'Python', 'REST APIs', 'WebSockets'],
+        tools: ['Node.js', 'Express.js', 'Python', 'REST APIs', 'WebSockets'],
     },
     {
         num: '03',
@@ -106,7 +106,7 @@ export default function HomePage() {
                 <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_390px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_440px]">
                     {/* Left: Hero content */}
                     <div className="order-2 lg:order-1">
-                        <Reveal>
+                        {/* <Reveal>
                             <div className="inline-flex items-center gap-2.5 rounded-full border border-border bg-background px-3.5 py-1.5 text-sm font-medium text-muted-foreground shadow-sm">
                                 <span className="relative flex h-2 w-2">
                                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-50" />
@@ -114,10 +114,10 @@ export default function HomePage() {
                                 </span>
                                 Crafting software that works
                             </div>
-                        </Reveal>
+                        </Reveal> */}
 
                         <Reveal delay={0.08}>
-                            <h1 className="mt-8 max-w-4xl text-[clamp(2.7rem,6.2vw,5.4rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-foreground">
+                            <h1 className="mt-0 max-w-4xl text-[clamp(2.7rem,6.2vw,5.4rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-foreground">
                                 Full-stack developer building{' '}
                                 <span className="text-primary">clean, reliable</span>{' '}
                                 digital products.
@@ -127,38 +127,37 @@ export default function HomePage() {
                         <Reveal delay={0.16}>
                             <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
                                 <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-    I build thoughtful web experiences that combine clean interfaces,
-    dependable engineering, and practical solutions for real businesses.
-    I’ve delivered 70+ web and software projects for clients across Europe
-    and beyond.
-</p>
+                                    I build thoughtful web experiences that combine clean interfaces,
+                                    dependable engineering, and practical solutions for real businesses.
+                                    I’ve delivered 70+ web and software projects for clients across Europe
+                                    and beyond.
+                                </p>
                             </p>
                         </Reveal>
 
-                            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-                                <Link
-                                    to="/work"
-                                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-[0_8px_20px_rgba(198,93,50,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_12px_26px_rgba(198,93,50,0.3)] active:translate-y-0 active:scale-[0.98] sm:w-auto"
-                                >
-                                    Explore work
-                                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                                </Link>
+                        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+                            <Link
+                                to="/work"
+                                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-[0_8px_20px_rgba(198,93,50,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_12px_26px_rgba(198,93,50,0.3)] active:translate-y-0 active:scale-[0.98] sm:w-auto"
+                            >
+                                Explore work
+                                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                            </Link>
 
-                                <Link
-                                    to="/contact"
-                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-6 py-3.5 text-base font-semibold text-foreground transition-all duration-200 hover:border-foreground/25 hover:bg-secondary active:scale-[0.98] sm:w-auto"
-                                >
-                                    Get in touch
-                                </Link>
-                            </div>
+                            <Link
+                                to="/contact"
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-6 py-3.5 text-base font-semibold text-foreground transition-all duration-200 hover:border-foreground/25 hover:bg-secondary active:scale-[0.98] sm:w-auto"
+                            >
+                                Get in touch
+                            </Link>
+                        </div>
 
-                        <Reveal delay={0.32}>
-                            <div className="mt-4 flex flex-wrap items-center gap-x-7 gap-y-3  pt-6 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-xs">
-                                <span>From idea to deployment</span>
-                                <span>Open to freelance & full-time</span>
-                                <span>Working worldwide, remotely</span>
-                            </div>
-                        </Reveal>
+
+                        <div className="mt-4 flex flex-wrap items-center gap-x-7 gap-y-3  pt-6 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-xs">
+                            <span>From idea to deployment</span>
+                            <span>Open to freelance & full-time</span>
+                            <span>Working worldwide, remotely</span>
+                        </div>
                     </div>
 
                     {/* Right: Editorial portrait */}
@@ -266,8 +265,10 @@ export default function HomePage() {
                                         aria-label={`View case study: ${project.title}`}
                                     >
                                         <ProjectImage
-                                            className="aspect-[16/10]"
+                                            src={project.imageUrl}
+                                            alt={project.imageAlt || `${project.title} — project screenshot`}
                                             label={`${project.title} — screenshot`}
+                                            className="aspect-[16/10]"
                                         />
                                     </Link>
 
@@ -550,35 +551,35 @@ export default function HomePage() {
             </section>
 
             {/* ── Final CTA ────────────────────────────────── */}
-           <section className="border-t border-border bg-secondary/50">
-    <div className="container max-w-7xl py-28 text-center md:py-36">
-        <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-                05 — Next Step
-            </p>
+            <section className="border-t border-border bg-secondary/50">
+                <div className="container max-w-7xl py-28 text-center md:py-36">
+                    <Reveal>
+                        <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                            05 — Next Step
+                        </p>
 
-            <h2 className="mx-auto mt-6 max-w-3xl text-[clamp(2.25rem,7vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-foreground">
-                Have a project in mind?
-            </h2>
+                        <h2 className="mx-auto mt-6 max-w-3xl text-[clamp(2.25rem,7vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-foreground">
+                            Have a project in mind?
+                        </h2>
 
-            <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
-                Need a web application, a smarter workflow, or a developer who can
-                turn an ambitious concept into a working product? Tell me what you’re
-                working on.
-            </p>
-        </Reveal>
+                        <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                            Need a web application, a smarter workflow, or a developer who can
+                            turn an ambitious concept into a working product? Tell me what you’re
+                            working on.
+                        </p>
+                    </Reveal>
 
-        <Reveal delay={0.12}>
-            <Link
-                to="/contact"
-                className="group mt-10 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
-            >
-                Send a Message
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-            </Link>
-        </Reveal>
-    </div>
-</section>
+                    <Reveal delay={0.12}>
+                        <Link
+                            to="/contact"
+                            className="group mt-10 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
+                        >
+                            Send a Message
+                            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                        </Link>
+                    </Reveal>
+                </div>
+            </section>
         </>
     );
 }
