@@ -151,7 +151,7 @@ export default function Header() {
                 <header
 
                     className={cn(
-                        'flex h-20 items-center justify-between rounded-2xl border border-border/70 px-4 shadow-[0_8px_30px_rgba(24,24,27,0.08)] backdrop-blur-md sm:h-20 sm:px-6',
+                        'flex h-16 items-center justify-between rounded-2xl border border-border/70 px-4 shadow-[0_8px_30px_rgba(24,24,27,0.08)] backdrop-blur-md sm:h-20 sm:px-6',
                         'bg-background/75'
                     )}
                 >
