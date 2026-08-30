@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 const Logo = () => (
     <Link
         to="/"
-        className="group flex items-baseline gap-[2px] font-display text-xl font-semibold tracking-tight text-foreground transition-opacity hover:opacity-100"
+        className="group flex items-baseline gap-[2px] font-display text-lg md:text-xl font-semibold tracking-tight text-foreground transition-opacity hover:opacity-100"
         aria-label="Muhammad Haris Nadeem — Home"
     >
         <span className="font-mono text-primary transition-colors group-hover:text-primary-dark">
