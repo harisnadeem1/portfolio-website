@@ -35,7 +35,7 @@ export default function WorkPage() {
         />
       </Helmet>
 
-      <section className="container max-w-7xl pb-32 pt-24 md:pt-12">
+      <section className="container max-w-7xl pb-32 pt-8 md:pt-12">
         {/* Hero */}
         <Reveal>
           <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-16">
@@ -72,7 +72,7 @@ export default function WorkPage() {
                   {String(totalProjects).padStart(2, '0')}
                 </p>
 
-                <p className="mt-1 text-sm text-muted-foreground">
+                <p className="mt-1 text-base md:text-sm text-muted-foreground">
                   Selected projects and case studies
                 </p>
 
@@ -82,7 +82,7 @@ export default function WorkPage() {
                       <Code2 className="h-4 w-4" strokeWidth={1.8} />
                     </span>
 
-                    <span className="text-sm text-foreground">
+                    <span className="text-base md:text-sm text-foreground">
                       Full-stack development
                     </span>
                   </div>
@@ -92,7 +92,7 @@ export default function WorkPage() {
                       <Layers3 className="h-4 w-4" strokeWidth={1.8} />
                     </span>
 
-                    <span className="text-sm text-foreground">
+                    <span className="text-base md:text-sm text-foreground">
                       Web products and systems
                     </span>
                   </div>
@@ -102,7 +102,7 @@ export default function WorkPage() {
                       <BriefcaseBusiness className="h-4 w-4" strokeWidth={1.8} />
                     </span>
 
-                    <span className="text-sm text-foreground">
+                    <span className="text-base md:text-sm text-foreground">
                       Built for real use cases
                     </span>
                   </div>
@@ -155,7 +155,7 @@ export default function WorkPage() {
                       onClick={() => setFilter(category)}
                       aria-pressed={isActive}
                       className={cn(
-                        'inline-flex min-h-10 items-center rounded-full border px-4 text-sm font-medium transition-all active:scale-[0.97]',
+                        'inline-flex min-h-10 items-center rounded-full border px-4 text-base md:text-sm font-medium transition-all active:scale-[0.97]',
                         isActive
                           ? 'border-primary bg-primary text-primary-foreground shadow-sm shadow-primary/20'
                           : 'border-border bg-background text-muted-foreground hover:border-foreground/25 hover:bg-secondary hover:text-foreground'
@@ -182,12 +182,12 @@ export default function WorkPage() {
                     className="block overflow-hidden rounded-2xl border border-border bg-secondary/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/35 group-hover:shadow-xl group-hover:shadow-foreground/5"
                   >
                     <div className="overflow-hidden">
-                     <ProjectImage
-    src={project.imageUrl}
-    alt={project.imageAlt || `${project.title} — project screenshot`}
-    label={`${project.title} — screenshot`}
-    className="aspect-[16/10]"
-/>
+                      <ProjectImage
+                        src={project.imageUrl}
+                        alt={project.imageAlt || `${project.title} — project screenshot`}
+                        label={`${project.title} — screenshot`}
+                        className="aspect-[16/10]"
+                      />
                     </div>
                   </Link>
 
@@ -208,12 +208,12 @@ export default function WorkPage() {
                         </h2>
                       </div>
 
-                      <span className="mt-1 shrink-0 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium tabular-nums text-muted-foreground">
+                      <span className="mt-1 shrink-0 rounded-full border border-border bg-background px-3 py-1 text-sm md:text-xs font-medium tabular-nums text-muted-foreground">
                         {project.year}
                       </span>
                     </div>
 
-                    <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-3 max-w-xl text-base md:text-sm leading-relaxed text-muted-foreground">
                       {project.description}
                     </p>
 
@@ -222,7 +222,7 @@ export default function WorkPage() {
                         {project.tags.map((tag) => (
                           <li
                             key={tag}
-                            className="rounded-full border border-border bg-secondary/40 px-3 py-1 text-xs font-medium text-muted-foreground"
+                            className="rounded-full border border-border bg-secondary/40 px-3 py-1 text-sm md:text-xs font-medium text-muted-foreground"
                           >
                             {tag}
                           </li>
@@ -232,7 +232,7 @@ export default function WorkPage() {
 
                     <Link
                       to={`/work/${project.slug}`}
-                      className="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                      className="group/link mt-6 inline-flex items-center gap-2 text-base md:text-sm font-semibold text-primary transition-colors hover:text-primary/80"
                     >
                       Explore project
 
@@ -283,7 +283,7 @@ export default function WorkPage() {
 
             <div className="relative flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-2xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                <p className="text-sm md:text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                   Have something in mind?
                 </p>
 
@@ -291,7 +291,7 @@ export default function WorkPage() {
                   Let’s build the next project together.
                 </h2>
 
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                <p className="mt-3 text-base  leading-relaxed text-muted-foreground md:text-base">
                   Whether you are starting with an idea or improving an
                   existing product, I can help you plan and build a useful,
                   reliable digital solution.
@@ -300,7 +300,7 @@ export default function WorkPage() {
 
               <Link
                 to="/book-a-call"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98] sm:w-auto"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base md:text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98] sm:w-auto"
               >
                 Book a free call
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

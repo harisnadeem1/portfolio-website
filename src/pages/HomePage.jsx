@@ -27,7 +27,7 @@ function ToolPill({ children }) {
                 '--mouse-x': `${position.x}%`,
                 '--mouse-y': `${position.y}%`,
             }}
-            className="tool-pill-reflective rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium text-muted-foreground transition-all duration-200 hover:border-primary/45 hover:text-foreground"
+            className="tool-pill-reflective rounded-full border border-border bg-background px-2.5 py-1 text-sm md:text-xs font-medium text-muted-foreground transition-all duration-200 hover:border-primary/45 hover:text-foreground"
         >
             {children}
         </li>
@@ -102,7 +102,7 @@ export default function HomePage() {
             </Helmet>
 
             {/* ── Hero ─────────────────────────────────────── */}
-            <section className="container max-w-7xl pb-24 pt-32 sm:pt-36 md:pb-24 md:pt-12">
+            <section className="container max-w-7xl pb-12 pt-8 sm:pt-36 md:pb-24 md:pt-12">
                 <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_390px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_440px]">
                     {/* Left: Hero content */}
                     <div className="order-2 lg:order-1">
@@ -227,7 +227,7 @@ export default function HomePage() {
 
             {/* ── Selected Work ────────────────────────────── */}
             <section className="border-t border-border">
-                <div className="container max-w-7xl py-24 md:py-24">
+                <div className="container max-w-7xl py-12 md:py-24">
                     <Reveal>
                         <div className="flex items-end justify-between gap-6">
                             <div>
@@ -248,7 +248,7 @@ export default function HomePage() {
                         </div>
                     </Reveal>
 
-                    <div className="mt-16 space-y-24 md:mt-20 md:space-y-28">
+                    <div className="mt-8 space-y-16 md:mt-20 md:space-y-28">
                         {featured.map((project, i) => (
                             <Reveal key={project.slug} delay={0.05}>
                                 <article
@@ -277,21 +277,21 @@ export default function HomePage() {
                                             <span className="text-sm font-medium tabular-nums text-primary">
                                                 {String(i + 1).padStart(2, '0')}
                                             </span>
-                                            <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                                            <span className="text-sm md:text-xs font-medium uppercase tracking-widest text-muted-foreground">
                                                 {project.category} · {project.year}
                                             </span>
                                         </div>
                                         <h3 className="mt-4 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
                                             {project.title}
                                         </h3>
-                                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+                                        <p className="mt-4  text-base leading-relaxed text-muted-foreground md:text-base">
                                             {project.description}
                                         </p>
                                         <ul className="mt-5 flex flex-wrap gap-2">
                                             {project.tags.map((tag) => (
                                                 <li
                                                     key={tag}
-                                                    className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground"
+                                                    className="rounded-full border border-border bg-background px-3 py-1 text-sm md:text-xs font-medium text-muted-foreground"
                                                 >
                                                     {tag}
                                                 </li>
@@ -299,7 +299,7 @@ export default function HomePage() {
                                         </ul>
                                         <Link
                                             to={`/work/${project.slug}`}
-                                            className="group mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                                            className="group mt-7 inline-flex items-center gap-1.5 text-base md:text-sm font-semibold text-primary transition-colors hover:text-primary/80"
                                         >
                                             View Case Study
                                             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -314,7 +314,7 @@ export default function HomePage() {
                         <div className="mt-16 sm:hidden">
                             <Link
                                 to="/work"
-                                className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-primary"
+                                className="group inline-flex items-center gap-1.5 text-base md:text-sm font-medium text-foreground transition-colors hover:text-primary"
                             >
                                 View all work
                                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -326,7 +326,7 @@ export default function HomePage() {
 
             {/* ── What I Build ─────────────────────────────── */}
             <section className="border-y border-border bg-secondary/50">
-                <div className="container max-w-7xl py-24 md:py-24">
+                <div className="container max-w-7xl py-12 md:py-24">
                     <Reveal>
                         <p className="text-sm font-semibold uppercase tracking-widest text-primary">
                             02 — What I Build
@@ -343,13 +343,13 @@ export default function HomePage() {
                                     key={cap.title}
                                     className="group bg-background p-8 transition-colors duration-200 hover:bg-secondary/60 md:p-10"
                                 >
-                                    <span className="text-sm font-medium tabular-nums text-primary">
+                                    <span className="text-base md:text-sm font-medium tabular-nums text-primary">
                                         {String(i + 1).padStart(2, '0')}
                                     </span>
                                     <h3 className="mt-5 text-xl font-semibold tracking-tight text-foreground">
                                         {cap.title}
                                     </h3>
-                                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                    <p className="mt-3 text-base md:text-sm leading-relaxed text-muted-foreground">
                                         {cap.text}
                                     </p>
                                 </div>
@@ -361,7 +361,7 @@ export default function HomePage() {
 
             {/* ── From Idea to Launch ────────────────────── */}
             <section className="border-t border-border">
-                <div className="container max-w-7xl py-24 md:py-24">
+                <div className="container max-w-7xl py-12 md:py-24">
                     <Reveal>
                         <p className="text-sm font-semibold uppercase tracking-widest text-primary">
                             03 — From Idea to Launch
@@ -369,7 +369,7 @@ export default function HomePage() {
                         <h2 className="mt-4 max-w-2xl text-[clamp(2rem,5vw,3rem)] leading-[0.98] font-semibold tracking-tight text-foreground">
                             A practical process for building better products
                         </h2>
-                        <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                        <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-base">
                             From product planning and interface design to development, integrations, deployment, and ongoing improvements—each stage is focused on delivering reliable software that works in the real world.
 
 
@@ -416,12 +416,12 @@ export default function HomePage() {
                     {/* Mobile: vertical connected flow */}
                     <Reveal delay={0.1}>
                         <div
-                            className="mt-12 md:hidden"
+                            className="mt-8 md:hidden"
                             role="list"
                             aria-label="Build pipeline stages"
                         >
                             {pipelineStages.map((stage, i) => (
-                                <div key={stage.num} role="listitem" className="group relative flex gap-4">
+                                <div key={stage.num} role="listitem" className="group mt-4 relative flex gap-4">
                                     {i < pipelineStages.length - 1 && (
                                         <span
                                             aria-hidden="true"
@@ -435,10 +435,10 @@ export default function HomePage() {
                                     </div>
                                     <div className="flex-1 pb-8 last:pb-0">
                                         <div className="rounded-xl border border-border bg-background p-5 transition-colors duration-200 group-hover:border-foreground/20">
-                                            <h3 className="text-base font-semibold tracking-tight text-foreground">
+                                            <h3 className="text-lg font-semibold tracking-tight text-foreground">
                                                 {stage.title}
                                             </h3>
-                                            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                                            <p className="mt-2 text-base leading-relaxed text-muted-foreground">
                                                 {stage.desc}
                                             </p>
                                             <ul className="mt-4 flex flex-wrap gap-1.5">
@@ -457,7 +457,7 @@ export default function HomePage() {
 
             {/* ── About ────────────────────────────────────── */}
             <section id="about" className="scroll-mt-20 border-t border-border">
-                <div className="container max-w-7xl py-24 md:py-24">
+                <div className="container max-w-7xl py-12 md:py-24">
                     <div className="grid gap-10 md:grid-cols-12 md:gap-12">
                         {/* Left: label + editorial image */}
                         <Reveal className="md:col-span-4">
@@ -528,7 +528,7 @@ export default function HomePage() {
                             </Reveal>
 
                             <Reveal delay={0.1}>
-                                <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                                <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-base">
                                     My work combines product thinking with hands-on engineering across
                                     client platforms, e-commerce, AI-enabled workflows, and custom
                                     operational tools. I value direct communication, thoughtful
@@ -562,7 +562,7 @@ export default function HomePage() {
                             Have a project in mind?
                         </h2>
 
-                        <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                        <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-base">
                             Need a web application, a smarter workflow, or a developer who can
                             turn an ambitious concept into a working product? Tell me what you’re
                             working on.

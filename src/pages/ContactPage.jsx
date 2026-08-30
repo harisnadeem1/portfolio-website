@@ -68,7 +68,7 @@ function validate(values) {
 
 const inputClass = (hasError) =>
   cn(
-    'w-full rounded-xl border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/15',
+    'w-full rounded-xl border bg-background px-4 py-3 text-base md:text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/15',
     hasError ? 'border-destructive' : 'border-border hover:border-foreground/25'
   );
 
@@ -167,7 +167,7 @@ export default function ContactPage() {
         />
       </Helmet>
 
-      <section className="container max-w-7xl pb-32 pt-24 md:pt-12">
+      <section className="container max-w-7xl pb-32 pt-8 md:pt-12">
         <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-16">
           {/* Left side */}
           <div>
@@ -290,9 +290,8 @@ export default function ContactPage() {
                           How can I help?
                         </h2>
 
-                        <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-                          Fill in the form below and I’ll get back to you by
-                          email.
+                        <p className="mt-2 max-w-md text-base md:text-sm leading-relaxed text-muted-foreground">
+                          Fill in the form below and I’ll get back to you.
                         </p>
                       </div>
 
@@ -306,7 +305,7 @@ export default function ContactPage() {
                         <div className="space-y-2">
                           <label
                             htmlFor="name"
-                            className="text-sm font-medium text-foreground"
+                            className="text-base md:text-sm font-medium text-foreground"
                           >
                             Your name *
                           </label>
@@ -332,7 +331,7 @@ export default function ContactPage() {
                         <div className="space-y-2">
                           <label
                             htmlFor="email"
-                            className="text-sm font-medium text-foreground"
+                            className="text-base md:text-sm font-medium text-foreground"
                           >
                             Email address *
                           </label>
@@ -359,7 +358,7 @@ export default function ContactPage() {
                       <div className="space-y-2">
                         <label
                           htmlFor="company"
-                          className="text-sm font-medium text-foreground"
+                          className="text-base md:text-sm font-medium text-foreground"
                         >
                           Company or organization{' '}
                           <span className="font-normal text-muted-foreground">
@@ -381,7 +380,7 @@ export default function ContactPage() {
                       <div className="space-y-2">
                         <label
                           htmlFor="message"
-                          className="text-sm font-medium text-foreground"
+                          className="text-base md:text-sm font-medium text-foreground"
                         >
                           Message *
                         </label>

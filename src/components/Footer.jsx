@@ -35,9 +35,9 @@ export default function Footer() {
         <footer className="border-t border-[#2B2B2E] bg-[#18181B]">
             <div className="container max-w-7xl py-12 md:py-16">
                 <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-                    <div className="max-w-xs">
+                    <div className="max-w-base md:max-w-xs">
                         <FooterLogo />
-                        <p className="mt-3 text-sm leading-relaxed text-[#F2EFE8]/70">
+                        <p className="mt-3 text-base md:text-sm leading-relaxed text-[#F2EFE8]/70">
                            Web applications, intelligent automation, and custom software for teams ready to move forward.
                         </p>
                     </div>
@@ -45,32 +45,32 @@ export default function Footer() {
                     <div className="flex flex-col gap-8 sm:flex-row sm:gap-16">
                          {/* Phone */}
                         <div>
-                            <p className="text-xs font-medium uppercase tracking-widest text-[#F2EFE8]/60">
+                            <p className="text-base md:text-xs font-medium uppercase tracking-widest text-[#F2EFE8]/60">
                                 Phone
                             </p>
 
                             <a
                                 href="tel:+923270701833"
-                                className="group mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#F2EFE8] transition-colors hover:text-primary"
+                                className="group mt-3 inline-flex items-center gap-1.5 text-lg md:text-sm font-medium text-[#F2EFE8] transition-colors hover:text-primary"
                             >
                                 {phone}
                                 <ArrowUpRight className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                             </a>
                         </div>
                         <div>
-                            <p className="text-xs font-medium uppercase tracking-widest text-[#F2EFE8]/60">
+                            <p className="text-base md:text-xs font-medium uppercase tracking-widest text-[#F2EFE8]/60">
                                 Email
                             </p>
                             <a
                                 href={`mailto:${email}`}
-                                className="group mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#F2EFE8] transition-colors hover:text-primary"
+                                className="group mt-3 inline-flex items-center gap-1.5 text-lg md:text-sm font-medium text-[#F2EFE8] transition-colors hover:text-primary"
                             >
                                 {email}
                                 <ArrowUpRight className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                             </a>
                         </div>
                         <div>
-                            <p className="text-xs font-medium uppercase tracking-widest text-[#F2EFE8]/60">
+                            <p className="text-base md:text-xs font-medium uppercase tracking-widest text-[#F2EFE8]/60">
                                 Elsewhere
                             </p>
                             <ul className="mt-3 space-y-2.5">
@@ -80,9 +80,9 @@ export default function Footer() {
                                             href={href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group inline-flex items-center gap-2 text-sm font-medium text-[#F2EFE8] transition-colors hover:text-primary"
+                                            className="group inline-flex items-center gap-2 text-lg md:text-sm font-medium text-[#F2EFE8] transition-colors hover:text-primary"
                                         >
-                                            <Icon className="h-4 w-4 text-[#F2EFE8]/60 transition-colors group-hover:text-primary" strokeWidth={1.75} />
+                                            <Icon className="h-6 w-6 md:h-4 md:w-4 text-[#F2EFE8]/60 transition-colors group-hover:text-primary" strokeWidth={1.75} />
                                             {label}
                                             <ArrowUpRight className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                                         </a>
@@ -93,7 +93,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-12 flex flex-col gap-2 border-t border-[#2B2B2E] pt-6 text-xs text-[#F2EFE8]/55 sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-12 flex flex-col gap-2 border-t border-[#2B2B2E] pt-6 text-xs text-[#F2EFE8]/55 sm:flex-row items-center justify-between sm:items-center sm:justify-between">
                     <p>© {year} Haris Nadeem. All rights reserved.</p>
                     <p>Designed &amp; built by Haris Nadeem</p>
                 </div>

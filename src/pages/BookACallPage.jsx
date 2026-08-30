@@ -11,9 +11,6 @@ import {
     FileSearch,
     MessagesSquare,
     Rocket,
-    Video,
-    ShieldCheck,
-    CalendarCheck,
 } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import { cn } from '@/lib/utils';
@@ -122,7 +119,7 @@ function validate(values, hasSlot) {
 
 const inputClass = (hasError) =>
     cn(
-        'w-full rounded-xl border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/15',
+        'w-full rounded-xl border bg-background px-4 py-3 text-base md:text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/15',
         hasError ? 'border-destructive' : 'border-border hover:border-foreground/25'
     );
 
@@ -135,7 +132,7 @@ export default function BookACallPage() {
     const [errors, setErrors] = useState({});
     const [confirmed, setConfirmed] = useState(false);
     const [isSending, setIsSending] = useState(false);
-const [submitError, setSubmitError] = useState('');
+    const [submitError, setSubmitError] = useState('');
 
     const handleChange = (field) => (e) => {
         const value = field === 'consent' ? e.target.checked : e.target.value;
@@ -188,69 +185,69 @@ const [submitError, setSubmitError] = useState('');
 
     const hasSlot = Boolean(selectedDate && selectedTime);
 
-   const handleSubmit = async (e) => {
-  e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-  const nextErrors = validate(values, hasSlot);
-  setErrors(nextErrors);
-  setSubmitError('');
+        const nextErrors = validate(values, hasSlot);
+        setErrors(nextErrors);
+        setSubmitError('');
 
-  if (Object.keys(nextErrors).length > 0) return;
+        if (Object.keys(nextErrors).length > 0) return;
 
-  const formattedDate = selectedDate.toLocaleDateString('en-GB', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
+        const formattedDate = selectedDate.toLocaleDateString('en-GB', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        });
 
-  const selectedType = MEETING_TYPES.find(
-    (type) => type.value === values.meetingType
-  );
+        const selectedType = MEETING_TYPES.find(
+            (type) => type.value === values.meetingType
+        );
 
-  const templateParams = {
-    client_name: values.name.trim(),
-    client_email: values.email.trim(),
-    company: values.company.trim() || 'Not provided',
-    subject: values.subject.trim(),
-    meeting_type: selectedType?.label || values.meetingType,
-    project_details: values.details.trim() || 'Not provided',
-    meeting_date: formattedDate,
-    meeting_time: selectedTime,
-    timezone: values.timezone,
-    submitted_at: new Date().toLocaleString('en-GB', {
-      dateStyle: 'medium',
-      timeStyle: 'short',
-    }),
-  };
+        const templateParams = {
+            client_name: values.name.trim(),
+            client_email: values.email.trim(),
+            company: values.company.trim() || 'Not provided',
+            subject: values.subject.trim(),
+            meeting_type: selectedType?.label || values.meetingType,
+            project_details: values.details.trim() || 'Not provided',
+            meeting_date: formattedDate,
+            meeting_time: selectedTime,
+            timezone: values.timezone,
+            submitted_at: new Date().toLocaleString('en-GB', {
+                dateStyle: 'medium',
+                timeStyle: 'short',
+            }),
+        };
 
-  try {
-    setIsSending(true);
+        try {
+            setIsSending(true);
 
-    await emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      templateParams,
-      {
-        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      }
-    );
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                templateParams,
+                {
+                    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+                }
+            );
 
-    setConfirmed(true);
- } catch (error) {
-  console.error('EmailJS booking request error:', {
-    status: error.status,
-    text: error.text,
-    fullError: error,
-  });
+            setConfirmed(true);
+        } catch (error) {
+            console.error('EmailJS booking request error:', {
+                status: error.status,
+                text: error.text,
+                fullError: error,
+            });
 
-  setSubmitError(
-    'Your request could not be sent right now. Please try again in a moment.'
-  );
-} finally {
-    setIsSending(false);
-  }
-};
+            setSubmitError(
+                'Your request could not be sent right now. Please try again in a moment.'
+            );
+        } finally {
+            setIsSending(false);
+        }
+    };
 
     const handleReset = () => {
         setValues(initialValues);
@@ -272,7 +269,7 @@ const [submitError, setSubmitError] = useState('');
                 />
             </Helmet>
 
-            <section className="container max-w-7xl pb-32 pt-24 md:pt-12">
+            <section className="container max-w-7xl pb-32 pt-8 md:pt-12">
                 {/* Page header */}
                 <Reveal>
                     <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_412px] lg:gap-16">
@@ -313,36 +310,36 @@ const [submitError, setSubmitError] = useState('');
                                     A focused conversation about your project.
                                 </h2>
 
-                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                <p className="mt-3 text-base md:text-sm leading-relaxed text-muted-foreground">
                                     Bring your idea, challenge, or existing product. You do not need a
                                     finished brief before we talk.
                                 </p>
 
                                 <dl className="mt-6 divide-y divide-border border-y border-border">
                                     <div className="flex items-center justify-between gap-4 py-3">
-                                        <dt className="text-sm text-muted-foreground">Format</dt>
-                                        <dd className="text-right text-sm font-medium text-foreground">
+                                        <dt className="text-base md:text-sm text-muted-foreground">Format</dt>
+                                        <dd className="text-right text-base md:text-sm font-medium text-foreground">
                                             Online meeting
                                         </dd>
                                     </div>
 
                                     <div className="flex items-center justify-between gap-4 py-3">
-                                        <dt className="text-sm text-muted-foreground">Duration</dt>
-                                        <dd className="text-right text-sm font-medium text-foreground">
+                                        <dt className="text-base md:text-sm text-muted-foreground">Duration</dt>
+                                        <dd className="text-right text-base md:text-sm font-medium text-foreground">
                                             30 minutes
                                         </dd>
                                     </div>
 
                                     <div className="flex items-center justify-between gap-4 py-3">
-                                        <dt className="text-sm text-muted-foreground">Cost</dt>
-                                        <dd className="text-right text-sm font-medium text-foreground">
+                                        <dt className="text-base md:text-sm text-muted-foreground">Cost</dt>
+                                        <dd className="text-right text-base md:text-sm font-medium text-foreground">
                                             Free
                                         </dd>
                                     </div>
 
                                     <div className="flex items-center justify-between gap-4 py-3">
-                                        <dt className="text-sm text-muted-foreground">Commitment</dt>
-                                        <dd className="text-right text-sm font-medium text-foreground">
+                                        <dt className="text-base md:text-sm text-muted-foreground">Commitment</dt>
+                                        <dd className="text-right text-base md:text-sm font-medium text-foreground">
                                             No obligation
                                         </dd>
                                     </div>
@@ -550,14 +547,14 @@ const [submitError, setSubmitError] = useState('');
                                         <CheckCircle2 className="h-7 w-7 text-primary" strokeWidth={1.75} />
                                     </span>
                                     <h2 className="mt-6 text-2xl font-semibold tracking-tight text-foreground">
-  Your call request has been sent.
-</h2>
+                                        Your call request has been sent.
+                                    </h2>
 
-<p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-  Thanks for reaching out. A confirmation with your request details has been
-  sent to your email address. I’ll review everything and reply to confirm the
-  meeting time or suggest the closest available alternative.
-</p>
+                                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                        Thanks for reaching out. A confirmation with your request details has been
+                                        sent to your email address. I’ll review everything and reply to confirm the
+                                        meeting time or suggest the closest available alternative.
+                                    </p>
 
                                     <dl className="mt-8 divide-y divide-border border-y border-border">
                                         <SummaryRow icon={<CalendarDays className="h-4 w-4" />} label="Date" value={selectedDate.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })} />
@@ -569,16 +566,16 @@ const [submitError, setSubmitError] = useState('');
                                     </dl>
 
                                     {/* Editable note */}
-                                  <div className="mt-6 rounded-xl border border-dashed border-border bg-secondary/40 p-4">
-  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-    What happens next
-  </p>
+                                    <div className="mt-6 rounded-xl border border-dashed border-border bg-secondary/40 p-4">
+                                        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                                            What happens next
+                                        </p>
 
-  <p className="mt-2 text-sm leading-relaxed text-foreground">
-    I’ll review your project details and contact you by email with the final
-    confirmation and online meeting link.
-  </p>
-</div>
+                                        <p className="mt-2 text-sm leading-relaxed text-foreground">
+                                            I’ll review your project details and contact you by email with the final
+                                            confirmation and online meeting link.
+                                        </p>
+                                    </div>
 
                                     <button
                                         type="button"
@@ -593,13 +590,13 @@ const [submitError, setSubmitError] = useState('');
                                     <h2 className="text-xl font-semibold tracking-tight text-foreground">
                                         Tell me about your project
                                     </h2>
-                                    <p className="mt-2 text-sm text-muted-foreground">
+                                    <p className="mt-2 text-base text-muted-foreground">
                                         Share the essentials below. I’ll review your request before the call so we can use our time well.
                                     </p>
 
                                     <div className="mt-8 space-y-6">
                                         <div className="space-y-2">
-                                            <label htmlFor="bk-name" className="text-sm font-medium text-foreground">
+                                            <label htmlFor="bk-name" className="text-base md:text-sm font-medium text-foreground">
                                                 Full name *
                                             </label>
                                             <input
@@ -616,7 +613,7 @@ const [submitError, setSubmitError] = useState('');
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label htmlFor="bk-email" className="text-sm font-medium text-foreground">
+                                            <label htmlFor="bk-email" className="text-base md:text-sm font-medium text-foreground">
                                                 Email address *
                                             </label>
                                             <input
@@ -633,7 +630,7 @@ const [submitError, setSubmitError] = useState('');
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label htmlFor="bk-company" className="text-sm font-medium text-foreground">
+                                            <label htmlFor="bk-company" className="text-base md:text-sm font-medium text-foreground">
                                                 Company or business name{' '}
                                                 <span className="font-normal text-muted-foreground">(optional)</span>
                                             </label>
@@ -649,7 +646,7 @@ const [submitError, setSubmitError] = useState('');
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label htmlFor="bk-subject" className="text-sm font-medium text-foreground">
+                                            <label htmlFor="bk-subject" className="text-base md:text-sm font-medium text-foreground">
                                                 Meeting subject *
                                             </label>
                                             <input
@@ -665,7 +662,7 @@ const [submitError, setSubmitError] = useState('');
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label htmlFor="bk-type" className="text-sm font-medium text-foreground">
+                                            <label htmlFor="bk-type" className="text-base md:text-sm font-medium text-foreground">
                                                 What would you like to build or improve? *
                                             </label>
                                             <div className="relative">
@@ -694,7 +691,7 @@ const [submitError, setSubmitError] = useState('');
                                         </div>
 
                                         <div className="space-y-2">
-                                            <label htmlFor="bk-details" className="text-sm font-medium text-foreground">
+                                            <label htmlFor="bk-details" className="text-base md:text-sm font-medium text-foreground">
                                                 Brief project details{' '}
                                                 <span className="font-normal text-muted-foreground">(optional, but helpful)</span>
                                             </label>
@@ -717,7 +714,7 @@ const [submitError, setSubmitError] = useState('');
                                                     aria-invalid={Boolean(errors.consent)}
                                                     className="mt-0.5 h-5 w-5 shrink-0 rounded border-border text-primary outline-none focus:ring-2 focus:ring-primary/15"
                                                 />
-                                                <span className="text-sm leading-relaxed text-foreground">
+                                                <span className="text-base md:text-sm leading-relaxed text-foreground">
                                                     I agree to receive meeting details by email.
                                                 </span>
                                             </label>
@@ -727,24 +724,24 @@ const [submitError, setSubmitError] = useState('');
                                         </div>
 
                                         <button
-  type="submit"
-  disabled={isSending}
-  className={cn(
-    'group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]',
-    isSending && 'cursor-not-allowed opacity-70'
-  )}
->
-  {isSending ? 'Sending request…' : 'Request a free discovery call'}
+                                            type="submit"
+                                            disabled={isSending}
+                                            className={cn(
+                                                'group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]',
+                                                isSending && 'cursor-not-allowed opacity-70'
+                                            )}
+                                        >
+                                            {isSending ? 'Sending request…' : 'Request a free discovery call'}
 
-  {!isSending && (
-    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-  )}
-</button>
-{submitError && (
-  <p role="alert" className="text-center text-sm text-destructive">
-    {submitError}
-  </p>
-)}
+                                            {!isSending && (
+                                                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                                            )}
+                                        </button>
+                                        {submitError && (
+                                            <p role="alert" className="text-center text-sm text-destructive">
+                                                {submitError}
+                                            </p>
+                                        )}
                                     </div>
                                 </form>
                             )}
@@ -771,7 +768,7 @@ const [submitError, setSubmitError] = useState('');
                                     What happens after you request a call?
                                 </h2>
 
-                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                                <p className="mt-3 text-base  leading-relaxed text-muted-foreground md:text-base">
                                     I’ll make sure we use the call to understand your idea, find the
                                     right technical approach, and decide on the most practical next step.
                                 </p>
@@ -815,11 +812,11 @@ const [submitError, setSubmitError] = useState('');
                                             </span>
                                         </div>
 
-                                        <h3 className="mt-5 text-base font-semibold tracking-tight text-foreground">
+                                        <h3 className="mt-5 text-lg md:text-base font-semibold tracking-tight text-foreground">
                                             {title}
                                         </h3>
 
-                                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                                        <p className="mt-2 text-base md:text-sm leading-relaxed text-muted-foreground">
                                             {description}
                                         </p>
                                     </li>

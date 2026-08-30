@@ -33,7 +33,8 @@ export default function Header() {
     const location = useLocation();
     const headerRef = useRef(null);
     const panelRef = useRef(null);
-    const closeBtnRef = useRef(null);
+    const menuButtonRef = useRef(null);
+    const sheetCloseButtonRef = useRef(null);
 
     // Close mobile menu whenever the route or hash changes.
     useEffect(() => {
@@ -53,6 +54,23 @@ export default function Header() {
 
         requestAnimationFrame(scrollToAbout);
     }, [location.pathname, location.hash]);
+
+
+
+
+    useEffect(() => {
+        if (!open) return;
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [open]);
+
+
+
 
     // Detect when the About section is in view.
     useEffect(() => {
@@ -92,33 +110,37 @@ export default function Header() {
         };
 
         document.addEventListener('keydown', onKeyDown);
-        const timeout = setTimeout(() => closeBtnRef.current?.focus(), 50);
+
+        const timeout = setTimeout(() => {
+            sheetCloseButtonRef.current?.focus();
+        }, 50);
 
         return () => {
             document.removeEventListener('keydown', onKeyDown);
             clearTimeout(timeout);
+            menuButtonRef.current?.focus();
         };
     }, [open]);
 
     // Close mobile menu when clicking outside the header/panel.
-    useEffect(() => {
-        if (!open) return;
+    // useEffect(() => {
+    //     if (!open) return;
 
-        const onPointerDown = (event) => {
-            const clickedPanel =
-                panelRef.current && panelRef.current.contains(event.target);
-            const clickedHeader =
-                headerRef.current && headerRef.current.contains(event.target);
+    //     const onPointerDown = (event) => {
+    //         const clickedPanel =
+    //             panelRef.current && panelRef.current.contains(event.target);
+    //         const clickedHeader =
+    //             headerRef.current && headerRef.current.contains(event.target);
 
-            if (!clickedPanel && !clickedHeader) {
-                setOpen(false);
-            }
-        };
+    //         if (!clickedPanel && !clickedHeader) {
+    //             setOpen(false);
+    //         }
+    //     };
 
-        document.addEventListener('pointerdown', onPointerDown);
+    //     document.addEventListener('pointerdown', onPointerDown);
 
-        return () => document.removeEventListener('pointerdown', onPointerDown);
-    }, [open]);
+    //     return () => document.removeEventListener('pointerdown', onPointerDown);
+    // }, [open]);
 
     const desktopNavClass =
         'text-sm font-semibold uppercase tracking-[0.14em] transition-colors hover:text-foreground';
@@ -127,9 +149,9 @@ export default function Header() {
         <div className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
             <div className="pointer-events-auto w-full max-w-7xl">
                 <header
-                    ref={headerRef}
+
                     className={cn(
-                        'flex h-14 items-center justify-between rounded-2xl border border-border/70 px-4 shadow-[0_8px_30px_rgba(24,24,27,0.08)] backdrop-blur-md sm:h-20 sm:px-6',
+                        'flex h-20 items-center justify-between rounded-2xl border border-border/70 px-4 shadow-[0_8px_30px_rgba(24,24,27,0.08)] backdrop-blur-md sm:h-20 sm:px-6',
                         'bg-background/75'
                     )}
                 >
@@ -153,7 +175,7 @@ export default function Header() {
                         >
                             About
                         </Link>
-                        
+
                         <NavLink
                             to="/work"
                             className={({ isActive }) =>
@@ -166,7 +188,7 @@ export default function Header() {
                             Work
                         </NavLink>
 
-                        
+
 
                         <NavLink
                             to="/book-a-call"
@@ -195,89 +217,138 @@ export default function Header() {
                         </Link>
 
                         <button
-                            ref={closeBtnRef}
+                            ref={menuButtonRef}
                             type="button"
                             onClick={() => setOpen((value) => !value)}
-                            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border text-foreground transition-colors hover:bg-secondary md:hidden"
+                            className="inline-flex h-11 w-11 items-center justify-center   text-foreground  hover:bg-secondary md:hidden"
                             aria-label={open ? 'Close menu' : 'Open menu'}
                             aria-expanded={open}
                             aria-controls="mobile-nav-panel"
                         >
-                            {open ? (
-                                <X className="h-5 w-5" strokeWidth={1.75} />
-                            ) : (
-                                <Menu className="h-5 w-5" strokeWidth={1.75} />
-                            )}
+                            
+                                <Menu className="h-7 w-7" strokeWidth={2} />
+                            
                         </button>
                     </div>
                 </header>
 
-                {/* Mobile dropdown */}
+                {/* Mobile bottom-sheet navigation */}
                 <AnimatePresence>
                     {open && (
-                        <motion.div
-                            id="mobile-nav-panel"
-                            ref={panelRef}
-                            initial={{ opacity: 0, y: -8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -8 }}
-                            transition={{
-                                duration: 0.22,
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
-                            className="mt-2 overflow-hidden rounded-2xl border border-border/70 bg-background/95 shadow-[0_12px_40px_rgba(24,24,27,0.12)] backdrop-blur-md md:hidden"
-                            role="menu"
-                            aria-label="Mobile navigation"
-                        >
-                            <nav className="flex flex-col p-2">
-                                {mobileLinks.map((item) => {
-                                    const isAbout =
-                                        item.label === 'About' && aboutActive;
+                        <>
+                            {/* Dark page overlay */}
+                            <motion.button
+                                type="button"
+                                aria-label="Close navigation menu"
+                                className="fixed inset-0 z-40 cursor-default bg-foreground/35 backdrop-blur-[2px] md:hidden"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.2 }}
+                                onClick={() => setOpen(false)}
+                            />
 
-                                    return (
-                                        <Link
-                                            key={item.label}
-                                            to={item.to}
+                            {/* Bottom sheet */}
+                            <motion.div
+                                id="mobile-nav-panel"
+                                ref={panelRef}
+                                role="dialog"
+                                aria-modal="true"
+                                aria-label="Mobile navigation"
+                                initial={{ y: '100%' }}
+                                animate={{ y: 0 }}
+                                exit={{ y: '100%' }}
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 340,
+                                    damping: 32,
+                                    mass: 0.8,
+                                }}
+                                className="fixed inset-x-0 bottom-0 z-50 rounded-t-[2rem] border border-border/70 bg-background shadow-[0_-12px_40px_rgba(24,24,27,0.18)] md:hidden"
+                            >
+                                {/* Safe area and drag-handle visual */}
+                                <div className="px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3">
+                                    <div className="mx-auto h-1.5 w-12 rounded-full bg-border" />
+
+                                    <div className="mt-5 flex items-center justify-between px-2">
+                                        <div>
+                                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                                                Navigation
+                                            </p>
+
+                                            <p className="mt-1 text-sm text-muted-foreground">
+                                                Explore my portfolio
+                                            </p>
+                                        </div>
+
+                                        <button
+                                            ref={sheetCloseButtonRef}
+                                            type="button"
                                             onClick={() => setOpen(false)}
-                                            className={cn(
-                                                'flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium transition-colors hover:bg-secondary hover:text-primary',
-                                                isAbout
-                                                    ? 'text-primary'
-                                                    : 'text-foreground'
-                                            )}
-                                            role="menuitem"
-                                            aria-current={
-                                                isAbout ? 'page' : undefined
-                                            }
+                                            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-secondary/50 text-foreground transition-colors hover:bg-secondary"
+                                            aria-label="Close navigation menu"
                                         >
-                                            {item.label}
-                                            <ArrowUpRight
-                                                className={cn(
-                                                    'h-4 w-4',
-                                                    isAbout
-                                                        ? 'text-primary'
-                                                        : 'text-muted-foreground'
-                                                )}
-                                                strokeWidth={2}
-                                            />
-                                        </Link>
-                                    );
-                                })}
+                                            <X className="h-5 w-5" strokeWidth={1.75} />
+                                        </button>
+                                    </div>
 
-                                <Link
-                                    to="/contact"
-                                    onClick={() => setOpen(false)}
-                                    className="mt-1 flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3.5 text-base font-medium text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
-                                    role="menuitem"
-                                >
-                                    Let&apos;s Talk
-                                    <ArrowUpRight
-                                        className="h-4 w-4"
-                                        strokeWidth={2}
-                                    />
-                                </Link>
-                            </nav>
-                        </motion.div>
+                                    <nav
+                                        className="mt-6 flex flex-col gap-1"
+                                        aria-label="Mobile navigation"
+                                    >
+                                        {mobileLinks.map((item) => {
+                                            const isAbout =
+                                                item.label === 'About' && aboutActive;
+
+                                            return (
+                                                <Link
+                                                    key={item.label}
+                                                    to={item.to}
+                                                    onClick={() => setOpen(false)}
+                                                    className={cn(
+                                                        'group flex min-h-14 items-center justify-between rounded-2xl px-4 py-3 text-base font-semibold transition-colors',
+                                                        isAbout
+                                                            ? 'bg-primary/10 text-primary'
+                                                            : 'text-foreground hover:bg-secondary'
+                                                    )}
+                                                    aria-current={
+                                                        isAbout ? 'page' : undefined
+                                                    }
+                                                >
+                                                    {item.label}
+
+                                                    <span
+                                                        className={cn(
+                                                            'flex h-9 w-9 items-center justify-center rounded-xl transition-colors',
+                                                            isAbout
+                                                                ? 'bg-primary text-primary-foreground'
+                                                                : 'bg-secondary text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'
+                                                        )}
+                                                    >
+                                                        <ArrowUpRight
+                                                            className="h-4 w-4"
+                                                            strokeWidth={2}
+                                                        />
+                                                    </span>
+                                                </Link>
+                                            );
+                                        })}
+                                    </nav>
+
+                                    <Link
+                                        to="/contact"
+                                        onClick={() => setOpen(false)}
+                                        className="group mt-5 flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-primary px-5 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
+                                    >
+                                        Let&apos;s Talk
+                                        <ArrowUpRight
+                                            className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                            strokeWidth={2}
+                                        />
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        </>
                     )}
                 </AnimatePresence>
             </div>

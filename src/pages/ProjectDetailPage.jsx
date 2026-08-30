@@ -25,7 +25,7 @@ function DetailSection({ title, children, className }) {
             )}
         >
             <div className="md:col-span-4">
-                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                <h2 className="text-sm md:text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                     {title}
                 </h2>
             </div>
@@ -38,11 +38,11 @@ function DetailSection({ title, children, className }) {
 function MetaCard({ label, children }) {
     return (
         <div className="bg-background p-5 transition-colors hover:bg-secondary/30 md:p-6">
-            <dt className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+            <dt className="text-sm md:text-xs font-medium uppercase tracking-widest text-muted-foreground">
                 {label}
             </dt>
 
-            <dd className="mt-3 text-sm font-medium text-foreground">{children}</dd>
+            <dd className="mt-3 text-base md:text-sm font-medium text-foreground">{children}</dd>
         </div>
     );
 }
@@ -104,7 +104,7 @@ export default function ProjectDetailPage() {
                 <meta name="description" content={project.description} />
             </Helmet>
 
-            <article className="container max-w-7xl pb-32 pt-16 md:pt-12">
+            <article className="container max-w-7xl pb-32 pt-8 md:pt-12">
                 {/* Back button */}
                 {/* <Reveal>
           <Link
@@ -144,7 +144,7 @@ export default function ProjectDetailPage() {
                             />
 
                             <div className="relative">
-                                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                                <p className="text-sm md:text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                                     Project snapshot
                                 </p>
 
@@ -155,10 +155,10 @@ export default function ProjectDetailPage() {
                                         </span>
 
                                         <div>
-                                            <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                                            <p className="text-sm md:text-xs uppercase tracking-wider text-muted-foreground">
                                                 Category
                                             </p>
-                                            <p className="mt-1 text-sm font-medium text-foreground">
+                                            <p className="mt-1 text-base md:text-sm font-medium text-foreground">
                                                 {project.category}
                                             </p>
                                         </div>
@@ -170,10 +170,10 @@ export default function ProjectDetailPage() {
                                         </span>
 
                                         <div>
-                                            <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                                            <p className="text-sm md:text-xs uppercase tracking-wider text-muted-foreground">
                                                 Role
                                             </p>
-                                            <p className="mt-1 text-sm font-medium text-foreground">
+                                            <p className="mt-1 text-base md:text-sm font-medium text-foreground">
                                                 {project.role}
                                             </p>
                                         </div>
@@ -185,10 +185,10 @@ export default function ProjectDetailPage() {
                                         </span>
 
                                         <div>
-                                            <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                                            <p className="text-sm md:text-xs uppercase tracking-wider text-muted-foreground">
                                                 Year
                                             </p>
-                                            <p className="mt-1 text-sm font-medium text-foreground">
+                                            <p className="mt-1 text-base md:text-sm font-medium text-foreground">
                                                 {project.year}
                                             </p>
                                         </div>
@@ -207,7 +207,7 @@ export default function ProjectDetailPage() {
                                 href={project.liveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
+                                className="group inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary px-5 py-3 text:base md:text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
                             >
                                 View live project
                                 <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -219,7 +219,7 @@ export default function ProjectDetailPage() {
                                 href={project.sourceUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex min-h-11 items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition-all hover:border-foreground/25 hover:bg-secondary active:scale-[0.98]"
+                                className="group inline-flex min-h-11 items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text:base md:text-sm font-semibold text-foreground transition-all hover:border-foreground/25 hover:bg-secondary active:scale-[0.98]"
                             >
                                 View source code
                                 <ExternalLink className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -248,7 +248,7 @@ export default function ProjectDetailPage() {
                                 {project.tags?.map((tag) => (
                                     <span
                                         key={tag}
-                                        className="rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium text-muted-foreground"
+                                        className="rounded-full border border-border bg-background px-2.5 py-1 text-sm md:text-xs font-medium text-muted-foreground"
                                     >
                                         {tag}
                                     </span>
@@ -267,7 +267,7 @@ export default function ProjectDetailPage() {
                             className="aspect-[16/9] w-full overflow-hidden rounded-xl"
                         />
 
-                        <figcaption className="px-2 pb-1 pt-4 text-xs text-muted-foreground">
+                        <figcaption className="px-2 pb-1 pt-4 text-sm text-muted-foreground">
                             Project preview — {project.title}
                         </figcaption>
                     </figure>
@@ -285,7 +285,7 @@ export default function ProjectDetailPage() {
                                 From challenge to a practical solution.
                             </h2>
 
-                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                            <p className="mt-3 text-base leading-relaxed text-muted-foreground md:text-base">
                                 A closer look at the problem, the build process, and the result
                                 behind this project.
                             </p>
@@ -294,19 +294,19 @@ export default function ProjectDetailPage() {
 
                     <div className="mt-8">
                         <DetailSection title="Overview">
-                            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-base">
                                 {project.overview}
                             </p>
                         </DetailSection>
 
                         <DetailSection title="Challenge">
-                            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-base">
                                 {project.challenge}
                             </p>
                         </DetailSection>
 
                         <DetailSection title="My role">
-                            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-base">
                                 {project.myRole}
                             </p>
                         </DetailSection>
@@ -322,7 +322,7 @@ export default function ProjectDetailPage() {
                                             />
                                         </span>
 
-                                        <span className="text-sm leading-relaxed text-muted-foreground md:text-base">
+                                        <span className="text-base leading-relaxed text-muted-foreground md:text-base">
                                             {item}
                                         </span>
                                     </li>
@@ -331,7 +331,7 @@ export default function ProjectDetailPage() {
                         </DetailSection>
 
                         <DetailSection title="Technical approach">
-                            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-base">
                                 {project.approach}
                             </p>
                         </DetailSection>
@@ -343,7 +343,7 @@ export default function ProjectDetailPage() {
                                     className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-primary/10 blur-2xl"
                                 />
 
-                                <p className="relative max-w-2xl text-sm leading-relaxed text-foreground md:text-base">
+                                <p className="relative max-w-2xl text-base leading-relaxed text-foreground md:text-base">
                                     {project.outcome}
                                 </p>
                             </div>
@@ -369,7 +369,7 @@ export default function ProjectDetailPage() {
                                     Let’s build something useful.
                                 </h2>
 
-                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                <p className="mt-3 text-base md:text-sm leading-relaxed text-muted-foreground">
                                     If you need a website, web application, dashboard, e-commerce
                                     experience, or automation workflow, let’s discuss the best
                                     way to bring it to life.
@@ -378,7 +378,7 @@ export default function ProjectDetailPage() {
 
                             <Link
                                 to="/book-a-call"
-                                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98] sm:w-auto"
+                                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98] sm:w-auto"
                             >
                                 Book a free call
                                 <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -391,9 +391,9 @@ export default function ProjectDetailPage() {
                 {(prev || next) && (
                     <nav
                         className={cn(
-                            'mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border',
-                            prev && next ? 'sm:grid-cols-2' : 'sm:grid-cols-1'
-                        )}
+    'mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border',
+    prev && next ? 'grid-cols-2' : 'grid-cols-1'
+)}
                         aria-label="More projects"
                     >
                         {prev && (
