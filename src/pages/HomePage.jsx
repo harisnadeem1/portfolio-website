@@ -126,13 +126,11 @@ export default function HomePage() {
 
                         <Reveal delay={0.16}>
                             <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-                                <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
                                     I build thoughtful web experiences that combine clean interfaces,
                                     dependable engineering, and practical solutions for real businesses.
                                     I’ve delivered 70+ web and software projects for clients across Europe
                                     and beyond.
                                 </p>
-                            </p>
                         </Reveal>
 
                         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">

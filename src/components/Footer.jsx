@@ -1,7 +1,12 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import {
+  FaGithub,
+  FaLinkedin,
+  FaStackOverflow,
+  FaExternalLinkAlt,
+} from 'react-icons/fa';
 
 const FooterLogo = () => (
     <Link
@@ -24,8 +29,21 @@ const FooterLogo = () => (
 const email = 'nadeemharis781@gmail.com';
 const phone = '+92 327 0701833';
 const socials = [
-    { label: 'GitHub', href: 'https://github.com/harisnadeem1', icon: Github },
-    { label: 'LinkedIn',  href: 'https://linkedin.com/in/muhammad-haris-nadeem-cs', icon: Linkedin },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/harisnadeem1',
+    icon: FaGithub,
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/muhammad-haris-nadeem-cs',
+    icon: FaLinkedin,
+  },
+  {
+    label: 'Stack Overflow',
+    href: 'https://stackoverflow.com/users/33076355/haris-nadeem',
+    icon: FaStackOverflow,
+  },
 ];
 
 export default function Footer() {
@@ -54,7 +72,7 @@ export default function Footer() {
                                 className="group mt-3 inline-flex items-center gap-1.5 text-lg md:text-sm font-medium text-[#F2EFE8] transition-colors hover:text-primary"
                             >
                                 {phone}
-                                <ArrowUpRight className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                                <FaExternalLinkAlt className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                             </a>
                         </div>
                         <div>
@@ -66,7 +84,7 @@ export default function Footer() {
                                 className="group mt-3 inline-flex items-center gap-1.5 text-lg md:text-sm font-medium text-[#F2EFE8] transition-colors hover:text-primary"
                             >
                                 {email}
-                                <ArrowUpRight className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                                <FaExternalLinkAlt className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                             </a>
                         </div>
                         <div>
@@ -84,7 +102,7 @@ export default function Footer() {
                                         >
                                             <Icon className="h-6 w-6 md:h-4 md:w-4 text-[#F2EFE8]/60 transition-colors group-hover:text-primary" strokeWidth={1.75} />
                                             {label}
-                                            <ArrowUpRight className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                                            <FaExternalLinkAlt className="h-3.5 w-3.5 text-[#F2EFE8]/60 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                                         </a>
                                     </li>
                                 ))}
