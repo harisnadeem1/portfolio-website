@@ -16,6 +16,7 @@
  */
 
 export const projects = [
+    //ronin
  {
     slug: 'ronin-charts',
     title: 'Ronin Charts',
@@ -63,6 +64,7 @@ export const projects = [
     outcome:
         'Ronin Charts became a comprehensive foundation for a private trading platform that brings risk planning, position management, trade documentation, performance analysis, compounding projections, and broker-connected workflows into one product. The project deepened my experience in full-stack architecture, PostgreSQL data modeling, secure authentication, financial calculation workflows, user-specific data access control, responsive interface design, and production deployment planning.',
 },
+//libenly
    {
     slug: 'libenly',
     title: 'Libenly',
@@ -118,6 +120,7 @@ export const projects = [
     outcome:
         'Libenly became a comprehensive foundation for a modern dating and social-messaging product with a polished responsive interface and a substantial backend design. The project demonstrates my ability to build complex role-based platforms, model relational PostgreSQL data, create payment-adjacent virtual-currency workflows, design admin dashboards, manage chat workflows, implement secure authentication patterns, and plan scalable real-time communication features. It also strengthened my experience in balancing a consumer-facing product experience with the operational tools needed to run and manage the platform.',
 },
+//markefy
   {
     slug: 'markefy',
     title: 'Markefy',
@@ -166,7 +169,137 @@ export const projects = [
     outcome:
         'The result is a polished digital presence for Markefy that brings its technology and marketing services into one coherent customer journey. The website supports the agency’s positioning around scalable software, high-performing websites, AI-powered SEO, and data-driven advertising while giving prospective clients straightforward routes to explore services and get in touch. The project strengthened my experience in agency-site architecture, responsive frontend implementation, conversion-oriented UI design, and communicating complex service offerings through a clear web experience.',
 },
-  
+//n8n
+  {
+  slug: 'ai-social-media-automation',
+  title: 'AI-Powered Social Media Automation',
+  category: 'Automation',
+  year: '2026',
+  role: 'Workflow Development & API Integrations',
+  imageUrl: '/projects/n8n.png',
+  imageAlt:
+    'n8n workflow automating AI content ideation, image generation, Google Sheets tracking, and Facebook publishing for three businesses.',
+  description:
+    'An n8n-based social-media automation system that generates tailored post ideas, creates AI visuals, records content in Google Sheets, and publishes posts to Facebook automatically. The workflow supports three separate brands: Scalable Insights, SemoBV, and Mabris Impex.',
+  tags: [
+    'n8n',
+    'OpenAI',
+    'Google Sheets API',
+    'Facebook Graph API',
+    'AI Image Generation',
+    'Workflow Automation',
+    'Social Media Automation',
+  ],
+  featured: true,
+  liveUrl: '',
+  sourceUrl: '',
+  overview:
+    'This project automates the end-to-end social-media content workflow for three independent businesses with different audiences and service offerings. On a scheduled basis, n8n triggers dedicated workflows for Scalable Insights, SemoBV, and Mabris Impex. Each workflow uses AI to generate a relevant post concept and caption, creates a matching visual, stores the content details in Google Sheets, and publishes the final image post to the appropriate Facebook Page.',
+  challenge:
+    'The main challenge was creating a reusable automation structure while preserving each company’s unique brand voice, services, and target audience. Since the businesses operate in different industries—AI-powered marketing, B2B vehicle import and export, and electrical, civil, and industrial installations—the content prompts, messaging, and visuals had to remain specific to each brand rather than feeling generic or repetitive.',
+  myRole:
+    'I designed and developed the complete n8n automation workflow, including the scheduled triggers, AI content-generation prompts, Google Sheets integration, image-generation steps, and Facebook Graph API publishing flow. I also structured separate content paths for each company so that every brand receives relevant, industry-specific social-media posts while using a consistent and scalable automation architecture.',
+  built: [
+    'Built scheduled n8n workflows that automatically generate content for three separate business Facebook Pages.',
+    'Created AI prompt flows that generate brand-specific post ideas, captions, and marketing copy for Scalable Insights, SemoBV, and Mabris Impex.',
+    'Integrated AI image generation to produce visuals aligned with each post concept before publishing.',
+    'Connected Google Sheets to log generated post content, ideas, captions, and workflow activity for tracking and review.',
+    'Integrated the Facebook Graph API to automatically publish generated image posts to the correct business page.',
+    'Designed separate workflow branches to keep each company’s content strategy, branding, and audience requirements independent.',
+  ],
+  approach:
+    'I used n8n as the central orchestration platform because it made it possible to connect scheduled triggers, AI models, Google Sheets, image generation, and Facebook publishing in one visual workflow. The automation begins with a schedule trigger and branches into separate company-specific paths. Each path generates an idea based on the company’s niche, turns that idea into social copy, saves the generated details to Google Sheets, produces a supporting image, and sends the completed post to Facebook through the Graph API. This approach reduces manual work while keeping the system modular enough to update prompts, posting frequency, or platforms later.',
+  outcome:
+    'The finished automation streamlines the social-media publishing process from idea generation to Facebook posting, reducing the need to manually brainstorm, write, design, organize, and publish every post. It provides a repeatable content system for three businesses while maintaining separate messaging for each brand. The project strengthened my experience with n8n workflow design, prompt engineering, third-party API integrations, automated content pipelines, and scalable social-media operations.',
+},
+//insta scrapepr
+{
+  slug: 'instanest-instagram-analytics',
+  title: 'InstaNest',
+  category: 'Web Apps',
+  year: '2026',
+  role: 'Full-Stack Development',
+  imageUrl: '/projects/instanest.png',
+  imageAlt:
+    'InstaNest dashboard for organizing public Instagram profiles by member and tracking followers, posts, comments, and visible views.',
+  description:
+    'A multi-user Instagram analytics dashboard that organizes public Instagram profiles under member groups and tracks followers, posts, comments, and publicly visible post or Reel views in one place.',
+  tags: [
+    'React',
+    'Node.js',
+    'PostgreSQL',
+    'Instagram Scraping',
+    'REST APIs',
+    'Authentication',
+    'Dashboard',
+  ],
+  featured: true,
+  liveUrl: '',
+  sourceUrl: '',
+  overview:
+    'InstaNest is a full-stack analytics dashboard built to monitor multiple public Instagram accounts without requiring login access to the tracked profiles. A user can create member groups, such as creators, clients, or team members, add multiple Instagram usernames under each group, and view performance data at three levels: overall account totals, member-level totals, and individual profile statistics. The platform focuses on publicly available metrics, including followers, post count, comments, likes, and visible post or Reel views.',
+  challenge:
+    'The key challenge was designing a reliable way to collect and organize public Instagram data while accounting for platform limitations and inconsistent metric visibility. The system needed to handle multiple usernames per member, separate data by logged-in user, avoid duplicate profile records, keep the dashboard fast, and preserve historical scrape data for troubleshooting and future reporting. Publicly visible view counts can vary by post type and profile visibility, so the product needed to clearly distinguish visible data from private Instagram analytics.',
+  myRole:
+    'I planned the product structure and developed the application end to end, including the database schema, account and member relationship model, Instagram profile management flow, dashboard aggregation logic, and public-data scraping workflow. I designed a PostgreSQL structure with users, members, Instagram profiles, and profile-stat snapshot tables to support current dashboard metrics while retaining historical records and raw scrape payloads for debugging.',
+  built: [
+    'Built a multi-user authentication flow so each user can manage their own member groups and tracked Instagram profiles.',
+    'Created member-based organization, allowing multiple public Instagram accounts to be grouped under a person, client, creator, or team label.',
+    'Developed an Instagram scraping layer that collects publicly visible followers, posts, comments, likes, and available post or Reel view counts.',
+    'Built dashboard calculations for overall account totals, member-level totals, and individual Instagram profile statistics.',
+    'Designed PostgreSQL tables and relationships for users, members, Instagram profiles, and historical profile-stat snapshots.',
+    'Stored current metrics directly on profile records for fast dashboard loading while saving snapshot history and raw payloads for future reporting and scraper debugging.',
+    'Added database constraints and indexes to keep usernames normalized, prevent duplicate records, and improve query performance.',
+  ],
+  approach:
+    'I used a full-stack architecture with a frontend dashboard, backend API, PostgreSQL database, and a public Instagram data-fetching layer. The data model follows a clear hierarchy: one user can create many members, each member can contain multiple Instagram profiles, and each profile can store many historical stat snapshots. The application saves the latest metrics on the instagram_profiles table for efficient dashboard queries, then stores each collection result in profile_stats_snapshots for history, debugging, and possible future growth charts. Usernames are normalized to lowercase before storage to ensure consistent matching and duplicate prevention.',
+  outcome:
+    'The result is a practical internal analytics tool that turns multiple separate Instagram profile checks into one organized dashboard. Users can track public accounts by group, compare performance across members, and view consolidated metrics without manually collecting data profile by profile. The project strengthened my experience in relational database design, PostgreSQL optimization, authenticated dashboard development, API architecture, scraping workflows, data aggregation, and managing the limitations of public third-party data sources.',
+},
+//mytrustedprop
+{
+  slug: 'my-trusted-prop',
+  title: 'MyTrustedProp',
+  category: 'Websites',
+  year: '2026',
+  role: 'Frontend Development & UI Implementation',
+  imageUrl: '/projects/myprop.png',
+  imageAlt:
+    'MyTrustedProp website showcasing trusted prop firm reviews, comparisons, ratings, discount codes, and trading resources.',
+  description:
+    'A prop-trading comparison and review website that helps traders discover, evaluate, and compare proprietary trading firms, access verified ratings, explore funding options, and find available discount offers.',
+  tags: [
+    'React',
+    'Frontend Development',
+    'Responsive Design',
+    'SEO Content',
+    'Comparison Platform',
+    'Financial Website',
+    'UI/UX',
+  ],
+  featured: true,
+  liveUrl: '',
+  sourceUrl: '',
+  overview:
+    'MyTrustedProp is an informational and comparison-focused website for traders looking to choose a proprietary trading firm. The platform brings together prop-firm reviews, trust ratings, discount codes, firm comparisons, category-based recommendations, educational content, and frequently asked questions. It is designed to reduce the time users spend researching funding providers by presenting key firm details, offers, rules, and review information in one clear, easy-to-navigate experience.',
+  challenge:
+    'The primary challenge was organizing a large amount of financial and trading-related content without overwhelming new users. The site needed to make complex prop-firm information—such as firm types, funding models, ratings, discounts, rules, and trading conditions—easy to scan and compare. It also required a consistent design system across multiple content-heavy pages, including the homepage, best-offers pages, best prop-firm listings, comparison pages, individual review pages, legal pages, and educational resources.',
+  myRole:
+    'I developed and implemented the website interface, translating the product requirements into a structured, responsive, and user-friendly experience. My work included building reusable page sections and components, organizing navigation and content hierarchy, designing prop-firm cards and comparison-oriented layouts, implementing responsive behavior, and maintaining a consistent visual system across marketing, review, legal, and educational pages.',
+  built: [
+    'Built a responsive homepage focused on helping users discover trusted proprietary trading firms and current discount offers.',
+    'Created reusable prop-firm listing cards with firm names, ratings, trust signals, categories, discount codes, review links, and call-to-action buttons.',
+    'Implemented navigation for key discovery pages, including Best Offers, Best Prop Firms, Compare Prop Firms, and Easiest Prop Firms to Pass.',
+    'Designed content sections for prop-firm reviews, trust indicators, featured firms, user testimonials, educational guides, and frequently asked questions.',
+    'Developed comparison-focused layouts that make prop-firm information easier for traders to evaluate before purchasing a challenge or funding plan.',
+    'Built responsive UI components and layouts optimized for browsing on desktop, tablet, and mobile devices.',
+    'Included legal and disclaimer content areas to clearly distinguish educational information from financial or investment advice.',
+  ],
+  approach:
+    'I approached the project as a content-first financial website with a strong focus on clarity, trust, and conversion. The interface uses clear content hierarchy: users can first browse top-rated firms and active offers, then move into detailed reviews, comparisons, and educational resources as needed. Reusable cards, sections, buttons, and page layouts keep the design consistent as new prop firms, reviews, and promotions are added. The responsive structure ensures that trading information, ratings, and calls to action remain readable and accessible across screen sizes.',
+  outcome:
+    'The completed website provides a structured destination for traders to research proprietary trading firms, compare options, access promotions, and understand common prop-trading concepts before choosing a funding provider. It transforms a complex research process into a clearer browsing journey by combining firm listings, ratings, comparisons, reviews, discounts, testimonials, and educational content in one platform. The project strengthened my experience in responsive frontend development, component-based UI design, content-heavy website architecture, conversion-focused layouts, and designing for financial-information audiences.',
+},
 ];
 
 export const categories = ['All', 'Web Apps', 'Websites', 'E-commerce', 'Custom Software', 'Automation'];

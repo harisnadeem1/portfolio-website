@@ -12,7 +12,7 @@ export const projects = [
         category: 'Automation',
         year: '2024',
         role: 'Development & Integrations',
-        imageUrl: '',
+        imageUrl: '/projects',
     imageAlt: '',
         description:
             'A short one- or two-sentence summary of this project. Replace this text with what the automation does and the manual work it replaced.',

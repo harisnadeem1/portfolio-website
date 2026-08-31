@@ -186,7 +186,7 @@ export default function WorkPage() {
                         src={project.imageUrl}
                         alt={project.imageAlt || `${project.title} — project screenshot`}
                         label={`${project.title} — screenshot`}
-                        className="aspect-[16/10]"
+                        className="aspect-[16/9]"
                       />
                     </div>
                   </Link>

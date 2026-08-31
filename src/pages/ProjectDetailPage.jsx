@@ -226,11 +226,11 @@ export default function ProjectDetailPage() {
                             </a>
                         )}
 
-                        {!project.liveUrl && !project.sourceUrl && (
+                        {/* {!project.liveUrl && !project.sourceUrl && (
                             <span className="inline-flex min-h-11 items-center rounded-xl border border-dashed border-border bg-secondary/30 px-5 py-3 text-sm text-muted-foreground">
                                 Private project — links are not publicly available.
                             </span>
-                        )}
+                        )} */}
                     </div>
                 </Reveal>
 
