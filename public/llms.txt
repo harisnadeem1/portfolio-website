@@ -1,0 +1,69 @@
+# Muhammad Haris Nadeem
+
+> Full-Stack and AI Software Developer specializing in custom software, web applications, AI automation, trading systems, and API integrations.
+
+Website: https://harisnadeem.dev/
+
+Muhammad Haris Nadeem, also known as Haris Nadeem, is a Full-Stack and AI Software Developer. He develops custom web applications, AI-powered solutions, workflow automation, trading software, API integrations, and scalable business applications.
+
+## Expertise
+
+- Full-Stack Web Development
+- Custom Software Development
+- MERN Stack Development
+- React
+- Node.js
+- Express.js
+- JavaScript
+- PostgreSQL
+- REST API Development
+- Artificial Intelligence Integration
+- AI Automation
+- Workflow Automation
+- OpenAI API
+- Google Gemini
+- Groq
+- Trading Software Development
+- Algorithmic Trading Software
+- Interactive Brokers (IBKR) Integration
+- IBKR APIs
+- TradingView
+- Pine Script
+- Web Scraping
+- Browser Automation
+- Selenium
+- Playwright
+- n8n Automation
+- WordPress
+- WooCommerce
+- Shopify
+- VPS Deployment
+- Nginx
+- PM2
+
+## Main Pages
+
+- [Home](https://harisnadeem.dev/): Professional portfolio and overview of skills and services.
+- [Work](https://harisnadeem.dev/work): Selected software development projects and professional work.
+- [Book a Call](https://harisnadeem.dev/book-a-call): Schedule a call regarding software development, AI automation, trading software, or other projects.
+- [Contact](https://harisnadeem.dev/contact): Contact information and ways to get in touch.
+
+## Professional Profiles
+
+- [GitHub](https://github.com/harisnadeem1): Software development projects and source code.
+- [LinkedIn](https://www.linkedin.com/in/muhammad-haris-nadeem-cs/): Professional profile and experience.
+- [Stack Overflow](https://stackoverflow.com/users/33076355/haris-nadeem): Developer profile and technical contributions.
+
+## Services
+
+Haris provides software development services including custom web application development, AI integrations, AI and workflow automation, API development and integration, trading software, Interactive Brokers integrations, web scraping, browser automation, and deployment of production web applications.
+
+## Contact
+
+For project inquiries, collaborations, custom software development, or consultations, visit:
+
+https://harisnadeem.dev/contact
+
+Or schedule a call:
+
+https://harisnadeem.dev/book-a-call
