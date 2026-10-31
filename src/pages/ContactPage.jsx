@@ -256,9 +256,10 @@ export default function ContactPage() {
                     </h2>
 
                     <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                      Your message has been sent successfully. I’ll reply to
-                      your email as soon as possible.
-                    </p>
+    Your message has been sent successfully. I’ll reply to
+    your email as soon as possible. Please check your spam
+    or junk folder if you don’t see my reply in your inbox.
+</p>
 
                     <div className="mt-7 w-full max-w-sm rounded-xl border border-border bg-secondary/40 p-4 text-left">
                       <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
