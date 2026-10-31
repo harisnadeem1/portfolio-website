@@ -1,7 +1,7 @@
 import { useState, React } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, GraduationCap, BookOpen, ExternalLink,Award } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import ProjectImage from '@/components/ProjectImage';
 import { projects } from '@/data/projects';
@@ -196,7 +196,7 @@ export default function HomePage() {
                                 }}
                             >
                                 <img
-                                    src="/profile-1.jpg"
+                                    src="/profile.png"
                                     alt="Haris Nadeem, full-stack developer"
                                     className="h-full w-full object-cover object-center grayscale-[12%] transition duration-700 hover:scale-105 hover:grayscale-0"
                                 />
@@ -547,6 +547,603 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+
+            <section id="experience" className="scroll-mt-20 border-t border-border">
+    <div className="container max-w-7xl py-12 md:py-24">
+
+        {/* Section Header */}
+        <Reveal>
+            <div className="mb-12 flex flex-col justify-between gap-4 md:mb-16 md:flex-row md:items-end">
+                <div>
+                    <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                        05 — Experience
+                    </p>
+
+                    <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
+                        Where I've worked
+                        <span className="text-primary"> & contributed.</span>
+                    </h2>
+                </div>
+
+                <p className="max-w-md text-base leading-relaxed text-muted-foreground">
+                    My professional journey through software development,
+                    building web applications, backend systems, and
+                    custom solutions for different business needs.
+                </p>
+            </div>
+        </Reveal>
+
+        {/* Experience Timeline */}
+        <div className="relative">
+
+            {/* Timeline Line */}
+            <div className="absolute bottom-8 left-[7px] top-3 w-px bg-border md:left-[11px]" />
+
+            <div className="space-y-12 md:space-y-16">
+
+                {/* Experience 01 — Markefy */}
+                <Reveal>
+                    <div className="relative grid gap-6 pl-9 md:grid-cols-12 md:gap-12 md:pl-0">
+
+                        {/* Timeline Dot */}
+                        <div className="absolute left-0 top-2 z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 border-primary bg-background md:left-[0px] md:h-[22px] md:w-[22px]">
+                            <div className="h-1.5 w-1.5 rounded-full bg-primary md:h-2 md:w-2" />
+                        </div>
+
+                        {/* Left Column */}
+                        <div className="md:col-span-4 md:pl-12">
+                            <p className="text-sm font-semibold text-primary">
+                                August 2025 — Present
+                            </p>
+
+                            <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground">
+                                Full-Stack Developer
+                            </h3>
+
+                            <p className="mt-1 text-base text-muted-foreground">
+                                Markefy SRL
+                            </p>
+
+                            <div className="mt-4 flex flex-wrap gap-2">
+                                <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
+                                    Full-time
+                                </span>
+                                <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
+                                    Remote
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Right Column */}
+                        <div className="md:col-span-8">
+                            <div className="rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30 md:p-8">
+
+                                <p className="text-base leading-relaxed text-muted-foreground">
+                                    Working on the development and maintenance of
+                                    web applications, SaaS platforms, and custom
+                                    software solutions. Responsible for building
+                                    frontend interfaces, developing backend
+                                    functionality, managing databases, and
+                                    integrating external services.
+                                </p>
+
+                                <div className="mt-7">
+                                    <h4 className="text-sm font-semibold text-foreground">
+                                        Key Responsibilities
+                                    </h4>
+
+                                    <ul className="mt-4 space-y-3">
+                                        {[
+                                            'Develop responsive web applications and user interfaces using React.js and modern JavaScript.',
+                                            'Build backend services, REST APIs, and application business logic using Node.js and Express.js.',
+                                            'Design and manage relational databases using PostgreSQL.',
+                                            'Implement authentication systems, payment gateways, and third-party API integrations.',
+                                            'Develop e-commerce platforms, digital product stores, and multilingual website functionality.',
+                                            'Deploy, maintain, and troubleshoot production applications.'
+                                        ].map((item, index) => (
+                                            <li key={index} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="mt-7 border-t border-border pt-6">
+                                    <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                                        Technologies
+                                    </h4>
+
+                                    <div className="mt-3 flex flex-wrap gap-2">
+                                        {[
+                                            'React.js',
+                                            'JavaScript',
+                                            'Node.js',
+                                            'Express.js',
+                                            'PostgreSQL',
+                                            'REST APIs',
+                                            'Git',
+                                            'Third-party Integrations'
+                                        ].map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </Reveal>
+
+                {/* Experience 02 — Freelance */}
+                <Reveal delay={0.1}>
+                    <div className="relative grid gap-6 pl-9 md:grid-cols-12 md:gap-12 md:pl-0">
+
+                        {/* Timeline Dot */}
+                        <div className="absolute left-0 top-2 z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 border-primary bg-background md:left-[4px] md:h-[22px] md:w-[22px]">
+                            <div className="h-1.5 w-1.5 rounded-full bg-primary md:h-2 md:w-2" />
+                        </div>
+
+                        {/* Left Column */}
+                        <div className="md:col-span-4 md:pl-12">
+                            <p className="text-sm font-semibold text-primary">
+                                March 2025 — Present
+                            </p>
+
+                            <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground">
+                                Freelance Full-Stack Software Engineer
+                            </h3>
+
+                            <p className="mt-1 text-base text-muted-foreground">
+                                Self-employed
+                            </p>
+
+                            <div className="mt-4 flex flex-wrap gap-2">
+                                <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
+                                    Freelance
+                                </span>
+                                <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
+                                    Remote
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Right Column */}
+                        <div className="md:col-span-8">
+                            <div className="rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30 md:p-8">
+
+                                <p className="text-base leading-relaxed text-muted-foreground">
+                                    Working independently with clients to design,
+                                    develop, and maintain custom web applications,
+                                    business platforms, e-commerce solutions, and
+                                    software integrations. Managing projects from
+                                    initial requirements and development through
+                                    deployment and ongoing improvements.
+                                </p>
+
+                                <div className="mt-7">
+                                    <h4 className="text-sm font-semibold text-foreground">
+                                        Key Responsibilities
+                                    </h4>
+
+                                    <ul className="mt-4 space-y-3">
+                                        {[
+                                            'Develop custom web applications and business management platforms based on client requirements.',
+                                            'Build frontend interfaces using React.js, JavaScript, and modern web technologies.',
+                                            'Develop backend systems, REST APIs, and server-side functionality using Node.js and Express.js.',
+                                            'Design and manage databases using PostgreSQL, MySQL, and MongoDB.',
+                                            'Develop and customise WordPress and Shopify websites, including e-commerce functionality.',
+                                            'Integrate payment gateways, third-party services, authentication systems, and external APIs.',
+                                            'Handle application deployment, hosting configuration, maintenance, and technical troubleshooting.'
+                                        ].map((item, index) => (
+                                            <li key={index} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="mt-7 border-t border-border pt-6">
+                                    <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                                        Technologies
+                                    </h4>
+
+                                    <div className="mt-3 flex flex-wrap gap-2">
+                                        {[
+                                            'React.js',
+                                            'Node.js',
+                                            'Express.js',
+                                            'PostgreSQL',
+                                            'MySQL',
+                                            'MongoDB',
+                                            'WordPress',
+                                            'Shopify',
+                                            'REST APIs',
+                                            'Payment Integrations'
+                                        ].map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </Reveal>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="education" className="scroll-mt-20 border-t border-border">
+    <div className="container max-w-7xl py-12 md:py-24">
+
+        {/* Section Header */}
+        <Reveal>
+            <div className="mb-12 flex flex-col justify-between gap-4 md:mb-16 md:flex-row md:items-end">
+                <div>
+                    <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                        06 — Education
+                    </p>
+
+                    <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
+                        Academic background
+                        <span className="text-primary"> & learning.</span>
+                    </h2>
+                </div>
+
+                <p className="max-w-md text-base leading-relaxed text-muted-foreground">
+                    My academic journey in computer science, building
+                    a foundation in computing, software engineering,
+                    and problem-solving.
+                </p>
+            </div>
+        </Reveal>
+
+        {/* Education Cards */}
+        <div className="grid gap-6 md:grid-cols-2">
+
+            {/* Bachelor's Degree */}
+            <Reveal>
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/40 md:p-8">
+
+                    {/* Decorative Accent */}
+                    <div className="absolute right-0 top-0 h-32 w-32 rounded-bl-full bg-secondary/70 transition-transform duration-500 group-hover:scale-125" />
+
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background text-primary">
+                            <GraduationCap className="h-6 w-6" />
+                        </div>
+
+                        <span className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs font-semibold text-primary">
+                            2021 — 2025
+                        </span>
+                    </div>
+
+                    <div className="relative z-10 mt-8">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                            Bachelor's Degree
+                        </p>
+
+                        <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+                            Bachelor of Science in Computer Science
+                        </h3>
+
+                        <p className="mt-3 text-base font-medium text-foreground">
+                            Information Technology University (ITU)
+                        </p>
+
+                        <p className="mt-1 text-sm text-muted-foreground">
+                            Lahore, Pakistan
+                        </p>
+
+                        <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                            Completed an undergraduate degree in Computer
+                            Science, developing knowledge across programming,
+                            algorithms, data structures, databases, operating
+                            systems, computer networks, and software development.
+                        </p>
+                    </div>
+
+                    {/* Academic Details */}
+                    <div className="relative z-10 mt-auto pt-8">
+                        <div className="grid grid-cols-2 gap-3 border-t border-border pt-6">
+                            <div>
+                                <p className="text-xs text-muted-foreground">
+                                    CGPA
+                                </p>
+                                <p className="mt-1 text-lg font-semibold text-foreground">
+                                    3.05 / 4.00
+                                </p>
+                            </div>
+
+                            <div>
+                                <p className="text-xs text-muted-foreground">
+                                    Duration
+                                </p>
+                                <p className="mt-1 text-lg font-semibold text-foreground">
+                                    4 Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Reveal>
+
+            {/* Intermediate */}
+            <Reveal delay={0.1}>
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/40 md:p-8">
+
+                    {/* Decorative Accent */}
+                    <div className="absolute right-0 top-0 h-32 w-32 rounded-bl-full bg-secondary/70 transition-transform duration-500 group-hover:scale-125" />
+
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background text-primary">
+                            <BookOpen className="h-6 w-6" />
+                        </div>
+
+                        <span className="rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold text-muted-foreground">
+                            2019 — 2021
+                        </span>
+                    </div>
+
+                    <div className="relative z-10 mt-8">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                            Higher Secondary Education
+                        </p>
+
+                        <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+                            Intermediate — Pre-Engineering
+                        </h3>
+
+                        <p className="mt-3 text-base font-medium text-foreground">
+                            Government Graduate College, Township
+                        </p>
+
+                        <p className="mt-1 text-sm text-muted-foreground">
+                            Lahore, Pakistan
+                        </p>
+
+                        <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                            Completed higher secondary education in the
+                            Pre-Engineering stream, building a foundation
+                            in mathematics, physics, and analytical
+                            problem-solving.
+                        </p>
+                    </div>
+
+                    {/* Academic Details */}
+                    <div className="relative z-10 mt-auto pt-8">
+                        <div className="grid grid-cols-2 gap-3 border-t border-border pt-6">
+                            <div>
+                                <p className="text-xs text-muted-foreground">
+                                    Percentage
+                                </p>
+                                <p className="mt-1 text-lg font-semibold text-foreground">
+                                    70.64%
+                                </p>
+                            </div>
+
+                            <div>
+                                <p className="text-xs text-muted-foreground">
+                                    Qualification
+                                </p>
+                                <p className="mt-1 text-lg font-semibold text-foreground">
+                                    HSSC
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Reveal>
+
+        </div>
+    </div>
+</section>
+
+<section id="certifications" className="scroll-mt-20 border-t border-border">
+    <div className="container max-w-7xl py-12 md:py-24">
+
+        {/* Header */}
+        <Reveal>
+            <div className="mb-12 flex flex-col justify-between gap-4 md:mb-16 md:flex-row md:items-end">
+                <div>
+                    <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                        07 — Certifications
+                    </p>
+
+                    <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
+                        Certifications
+                        <span className="text-primary"> & achievements.</span>
+                    </h2>
+                </div>
+
+                <p className="max-w-md text-base leading-relaxed text-muted-foreground">
+                    Professional certifications and technical training
+                    reflecting my continued learning across software
+                    development and emerging technologies.
+                </p>
+            </div>
+        </Reveal>
+
+        {/* Certificate Cards */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+            {/* 01 — Artificial Intelligence */}
+            <Reveal>
+                <div className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg">
+
+                    <a
+                        href="/certificates/ai.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-secondary p-3"
+                    >
+                        <img
+                            src="/certificates/ai.jpg"
+                            alt="Udemy Artificial Intelligence + LLM & ChatGPT Certificate"
+                            className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        />
+                    </a>
+
+                    <div className="p-5 md:p-6">
+                        <div className="flex items-center justify-between gap-3">
+                            <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                                Certificate of Completion
+                            </span>
+                            <span className="text-xs text-muted-foreground">
+                                2024
+                            </span>
+                        </div>
+
+                        <h3 className="mt-3 text-lg font-semibold leading-snug text-foreground">
+                            Artificial Intelligence + LLM & ChatGPT
+                        </h3>
+
+                        <p className="mt-2 text-sm text-muted-foreground">
+                            Udemy
+                        </p>
+
+                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                           Developed foundational knowledge of artificial intelligence, machine learning, neural networks, and deep learning, with practical exposure to building AI models and understanding modern language models (LLMs) and their applications.
+                        </p>
+
+                        <a
+                            href="https://ude.my/UC-22534976-99a8-44f4-afd5-f692dab1a114"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group/link mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80"
+                        >
+                            Verify Certificate
+                            <ExternalLink className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                        </a>
+                    </div>
+                </div>
+            </Reveal>
+
+            {/* 02 — SQL Advanced */}
+            <Reveal delay={0.1}>
+                <div className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg">
+
+                    <a
+                        href="/certificates/sql.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-secondary p-3"
+                    >
+                        <img
+                            src="/certificates/sql.png"
+                            alt="HackerRank SQL Advanced Certificate of Accomplishment"
+                            className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        />
+                    </a>
+
+                    <div className="p-5 md:p-6">
+                        <div className="flex items-center justify-between gap-3">
+                            <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                                Certificate of Accomplishment
+                            </span>
+                            <span className="text-xs text-muted-foreground">
+                                2023
+                            </span>
+                        </div>
+
+                        <h3 className="mt-3 text-lg font-semibold leading-snug text-foreground">
+                            SQL (Advanced)
+                        </h3>
+
+                        <p className="mt-2 text-sm text-muted-foreground">
+                            HackerRank
+                        </p>
+
+                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                          Demonstrated advanced SQL proficiency through a practical skill assessment, covering complex queries, data retrieval, aggregation, joins, subqueries, and efficient database operations.
+                        </p>
+
+                        <p className="mt-4 text-xs text-muted-foreground">
+                            Credential ID: D31933DEB931
+                        </p>
+
+                        <a
+                            href="https://www.hackerrank.com/certificates/d31933deb931"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group/link mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80"
+                        >
+                            View Certificate
+                            <ExternalLink className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                        </a>
+                    </div>
+                </div>
+            </Reveal>
+
+            {/* 03 — Cloud Computing */}
+            <Reveal delay={0.2}>
+                <div className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg">
+
+                    <a
+                        href="/certificates/cloud-computing.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-secondary p-3"
+                    >
+                        <img
+                            src="/certificates/cloud-computing.png"
+                            alt="Cloud Computing Certificate of Merit from Corvit Systems"
+                            className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        />
+                    </a>
+
+                    <div className="p-5 md:p-6">
+                        <div className="flex items-center justify-between gap-3">
+                            <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                                Certificate of Merit
+                            </span>
+                            <span className="text-xs text-muted-foreground">
+                                2023
+                            </span>
+                        </div>
+
+                        <h3 className="mt-3 text-lg font-semibold leading-snug text-foreground">
+                            Cloud Computing
+                        </h3>
+
+                        <p className="mt-2 text-sm text-muted-foreground">
+                            Corvit Systems
+                        </p>
+
+                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                          Developed an understanding of cloud computing concepts, service models, deployment models, cloud infrastructure, virtualisation, and the role of cloud technologies in hosting, managing, securing, and scaling modern software applications.
+                        </p>
+
+                        <a
+                            href="/certificates/cloud-computing.png"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group/link mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80"
+                        >
+                            View Certificate
+                            <ExternalLink className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                        </a>
+                    </div>
+                </div>
+            </Reveal>
+
+        </div>
+    </div>
+</section>
 
             {/* ── Final CTA ────────────────────────────────── */}
             <section className="border-t border-border bg-secondary/50">

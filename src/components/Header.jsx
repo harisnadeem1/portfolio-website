@@ -4,32 +4,54 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-const Logo = () => (
-    <Link
-        to="/"
-        className="group flex items-baseline gap-[2px] font-display text-lg md:text-xl font-semibold tracking-tight text-foreground transition-opacity hover:opacity-100"
-        aria-label="Muhammad Haris Nadeem — Home"
-    >
-        <span className="font-mono text-primary transition-colors group-hover:text-primary-dark">
-            &lt;
-        </span>
-        Muhammad&nbsp;Haris&nbsp;Nadeem
-        <span className="font-mono text-primary transition-colors group-hover:text-primary-dark">
-            /&gt;
-        </span>
-    </Link>
-);
+const Logo = () => {
+    const handleLogoClick = (event) => {
+        if (window.location.pathname === '/') {
+            event.preventDefault();
+
+            window.history.replaceState(
+                null,
+                '',
+                window.location.pathname
+            );
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        }
+    };
+
+    return (
+        <Link
+            to="/"
+            onClick={handleLogoClick}
+            className="group flex items-baseline gap-[2px] font-display text-lg font-semibold tracking-tight text-foreground transition-opacity hover:opacity-100 md:text-xl"
+            aria-label="Muhammad Haris Nadeem — Home"
+        >
+            <span className="font-mono text-primary transition-colors group-hover:text-primary-dark">
+                &lt;
+            </span>
+            Muhammad&nbsp;Haris&nbsp;Nadeem
+            <span className="font-mono text-primary transition-colors group-hover:text-primary-dark">
+                /&gt;
+            </span>
+        </Link>
+    );
+};
 
 const mobileLinks = [
-    { to: '/#about', label: 'About' },
-
+    { to: '/#about', label: 'About', id: 'about' },
+    { to: '/#experience', label: 'Experience', id: 'experience' },
+    { to: '/#education', label: 'Education', id: 'education' },
+    { to: '/#certifications', label: 'Certificates', id: 'certifications' },
     { to: '/work', label: 'Work' },
     { to: '/book-a-call', label: 'Book a Free Call' },
 ];
 
 export default function Header() {
     const [open, setOpen] = useState(false);
-    const [aboutActive, setAboutActive] = useState(false);
+    const [activeSection, setActiveSection] = useState('');
     const location = useLocation();
     const headerRef = useRef(null);
     const panelRef = useRef(null);
@@ -55,7 +77,20 @@ export default function Header() {
         requestAnimationFrame(scrollToAbout);
     }, [location.pathname, location.hash]);
 
+    useEffect(() => {
+        if (location.pathname !== '/' || !location.hash) return;
 
+        const sectionId = location.hash.substring(1);
+
+        const scrollToSection = () => {
+            document.getElementById(sectionId)?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        };
+
+        requestAnimationFrame(scrollToSection);
+    }, [location.pathname, location.hash]);
 
 
     useEffect(() => {
@@ -69,35 +104,79 @@ export default function Header() {
         };
     }, [open]);
 
+   useEffect(() => {
+    if (location.pathname !== '/') {
+        setActiveSection('');
+        return;
+    }
 
+    const sectionIds = [
+        'about',
+        'experience',
+        'education',
+        'certifications',
+    ];
+
+    const handleScroll = () => {
+        const activationPoint = 140;
+        let currentSection = '';
+
+        sectionIds.forEach((id) => {
+            const section = document.getElementById(id);
+
+            if (!section) return;
+
+            const rect = section.getBoundingClientRect();
+
+            if (
+                rect.top <= activationPoint &&
+                rect.bottom > activationPoint
+            ) {
+                currentSection = id;
+            }
+        });
+
+        setActiveSection(currentSection);
+    };
+
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, {
+        passive: true,
+    });
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, [location.pathname]);
 
 
     // Detect when the About section is in view.
-    useEffect(() => {
-        if (location.pathname !== '/') {
-            setAboutActive(false);
-            return;
-        }
+    // useEffect(() => {
+    //     if (location.pathname !== '/') {
+    //         setAboutActive(false);
+    //         return;
+    //     }
 
-        const aboutSection = document.getElementById('about');
+    //     const aboutSection = document.getElementById('about');
 
-        if (!aboutSection) return;
+    //     if (!aboutSection) return;
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setAboutActive(entry.isIntersecting);
-            },
-            {
-                root: null,
-                rootMargin: '-35% 0px -45% 0px',
-                threshold: 0,
-            }
-        );
+    //     const observer = new IntersectionObserver(
+    //         ([entry]) => {
+    //             setAboutActive(entry.isIntersecting);
+    //         },
+    //         {
+    //             root: null,
+    //             rootMargin: '-35% 0px -45% 0px',
+    //             threshold: 0,
+    //         }
+    //     );
 
-        observer.observe(aboutSection);
+    //     observer.observe(aboutSection);
 
-        return () => observer.disconnect();
-    }, [location.pathname]);
+    //     return () => observer.disconnect();
+    // }, [location.pathname]);
 
     // Close mobile menu with Escape and move focus to close control.
     useEffect(() => {
@@ -143,7 +222,7 @@ export default function Header() {
     // }, [open]);
 
     const desktopNavClass =
-        'text-sm font-semibold uppercase tracking-[0.14em] transition-colors hover:text-foreground';
+        'text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors hover:text-foreground';
 
     return (
         <div className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
@@ -159,22 +238,29 @@ export default function Header() {
 
                     {/* Desktop navigation */}
                     <nav
-                        className="hidden items-center gap-10 md:flex"
+                        className="hidden items-center gap-7 lg:flex"
                         aria-label="Main navigation"
                     >
-
-                        <Link
-                            to="/#about"
-                            aria-current={aboutActive ? 'page' : undefined}
-                            className={cn(
-                                desktopNavClass,
-                                aboutActive
-                                    ? 'text-primary'
-                                    : 'text-muted-foreground'
-                            )}
-                        >
-                            About
-                        </Link>
+                        {[
+                            { to: '/#about', label: 'About', id: 'about' },
+                            { to: '/#experience', label: 'Experience', id: 'experience' },
+                            { to: '/#education', label: 'Education', id: 'education' },
+                            { to: '/#certifications', label: 'Certificates', id: 'certifications' },
+                        ].map((item) => (
+                            <Link
+                                key={item.id}
+                                to={item.to}
+                                aria-current={activeSection === item.id ? 'location' : undefined}
+                                className={cn(
+                                    desktopNavClass,
+                                    activeSection === item.id
+                                        ? 'text-primary'
+                                        : 'text-muted-foreground'
+                                )}
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
 
                         <NavLink
                             to="/work"
@@ -187,8 +273,6 @@ export default function Header() {
                         >
                             Work
                         </NavLink>
-
-
 
                         <NavLink
                             to="/book-a-call"
@@ -225,9 +309,9 @@ export default function Header() {
                             aria-expanded={open}
                             aria-controls="mobile-nav-panel"
                         >
-                            
-                                <Menu className="h-7 w-7" strokeWidth={2} />
-                            
+
+                            <Menu className="h-7 w-7" strokeWidth={2} />
+
                         </button>
                     </div>
                 </header>
@@ -297,8 +381,9 @@ export default function Header() {
                                         aria-label="Mobile navigation"
                                     >
                                         {mobileLinks.map((item) => {
-                                            const isAbout =
-                                                item.label === 'About' && aboutActive;
+                                            const isActive = item.id
+                                                ? location.pathname === '/' && activeSection === item.id
+                                                : location.pathname === item.to;
 
                                             return (
                                                 <Link
@@ -307,12 +392,12 @@ export default function Header() {
                                                     onClick={() => setOpen(false)}
                                                     className={cn(
                                                         'group flex min-h-14 items-center justify-between rounded-2xl px-4 py-3 text-base font-semibold transition-colors',
-                                                        isAbout
+                                                        isActive
                                                             ? 'bg-primary/10 text-primary'
                                                             : 'text-foreground hover:bg-secondary'
                                                     )}
                                                     aria-current={
-                                                        isAbout ? 'page' : undefined
+                                                        isActive ? 'page' : undefined
                                                     }
                                                 >
                                                     {item.label}
@@ -320,7 +405,7 @@ export default function Header() {
                                                     <span
                                                         className={cn(
                                                             'flex h-9 w-9 items-center justify-center rounded-xl transition-colors',
-                                                            isAbout
+                                                            isActive
                                                                 ? 'bg-primary text-primary-foreground'
                                                                 : 'bg-secondary text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'
                                                         )}

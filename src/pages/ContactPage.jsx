@@ -15,8 +15,8 @@ import { cn } from '@/lib/utils';
 const contactLinks = [
   {
     label: 'Email',
-    value: 'nadeemharis781@gmail.com',
-    href: 'mailto:nadeemharis781@gmail.com',
+    value: 'muhammadharisnadeem781@gmail.com',
+    href: 'mailto:muhammadharisnadeem781@gmail.com',
   },
   {
     label: 'Phone',

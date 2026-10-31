@@ -26,7 +26,7 @@ const FooterLogo = () => (
 
 
 /* ── EDIT: your contact details and social links ────────── */
-const email = 'nadeemharis781@gmail.com';
+const email = 'muhammadharisnadeem781@gmail.com';
 const phone = '+92 327 0701833';
 const socials = [
   {
@@ -89,7 +89,7 @@ export default function Footer() {
                         </div>
                         <div>
                             <p className="text-base md:text-xs font-medium uppercase tracking-widest text-[#F2EFE8]/60">
-                                Elsewhere
+                                CONNECT
                             </p>
                             <ul className="mt-3 space-y-2.5">
                                 {socials.map(({ label, href, icon: Icon }) => (

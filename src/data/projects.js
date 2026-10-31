@@ -121,54 +121,54 @@ export const projects = [
         'Libenly became a comprehensive foundation for a modern dating and social-messaging product with a polished responsive interface and a substantial backend design. The project demonstrates my ability to build complex role-based platforms, model relational PostgreSQL data, create payment-adjacent virtual-currency workflows, design admin dashboards, manage chat workflows, implement secure authentication patterns, and plan scalable real-time communication features. It also strengthened my experience in balancing a consumer-facing product experience with the operational tools needed to run and manage the platform.',
 },
 //markefy
-  {
-    slug: 'markefy',
-    title: 'Markefy',
-    category: 'Websites',
-    year: '2026',
-    role: 'Frontend Development & Website Implementation',
-    description:
-        'Markefy is a Romania-based digital solutions company website built to present its web development, software, AI-powered SEO, paid advertising, and brand-marketing services. The platform gives potential clients a clear path from discovering the agency’s capabilities to understanding its process, results, and contact options.',
-    tags: [
-        'React',
-        'Vite',
-        'JavaScript',
-        'Tailwind CSS',
-        'Responsive Design',
-        'SEO',
-        'UI/UX',
-        'Performance Optimization',
-    ],
-    featured: true,
+//   {
+//     slug: 'markefy',
+//     title: 'Markefy',
+//     category: 'Websites',
+//     year: '2026',
+//     role: 'Frontend Development & Website Implementation',
+//     description:
+//         'Markefy is a Romania-based digital solutions company website built to present its web development, software, AI-powered SEO, paid advertising, and brand-marketing services. The platform gives potential clients a clear path from discovering the agency’s capabilities to understanding its process, results, and contact options.',
+//     tags: [
+//         'React',
+//         'Vite',
+//         'JavaScript',
+//         'Tailwind CSS',
+//         'Responsive Design',
+//         'SEO',
+//         'UI/UX',
+//         'Performance Optimization',
+//     ],
+//     featured: true,
 
-    imageUrl: '/projects/markefy.png',
-    imageAlt:
-        'Markefy agency website showcasing digital solutions, web development, software, SEO, and marketing services',
+//     imageUrl: '/projects/markefy.png',
+//     imageAlt:
+//         'Markefy agency website showcasing digital solutions, web development, software, SEO, and marketing services',
 
-    liveUrl: 'https://markefy.ai/',
-    sourceUrl: '',
+//     liveUrl: 'https://markefy.ai/',
+//     sourceUrl: '',
 
-    overview:
-        'Markefy is a digital-services agency based in Bragadiru, Romania, providing web design and development, custom software and app development, AI-powered SEO optimization, paid advertising, and content and brand marketing. I worked on a modern, responsive agency website that communicates these services clearly and supports the company’s goal of helping startups, SMEs, and enterprise clients turn ideas into scalable digital products and measurable marketing growth.',
-    challenge:
-        'The challenge was to present a broad range of technical and marketing services in a way that feels clear, credible, and easy to navigate for prospective clients. The website needed to balance strong visual presentation with practical conversion paths, explain an end-to-end delivery process, remain responsive across devices, and make it simple for visitors to explore services, view results, understand the company, and initiate contact.',
-    myRole:
-        'I contributed to the frontend development and website implementation, focusing on responsive layouts, reusable page sections, service-focused content presentation, user-interface consistency, and a clear lead-generation journey. My work supported the agency’s online presence by translating its service offering, process, and digital-growth positioning into a polished web experience.',
-    built: [
-        'Built responsive website sections that present Markefy’s web development, software development, AI-powered SEO, paid advertising, and content-marketing services.',
-        'Created a clear information architecture for the homepage, services, process, results, about, and contact pages.',
-        'Implemented responsive layouts and reusable UI patterns that adapt across desktop, tablet, and mobile screens.',
-        'Designed conversion-focused calls to action that guide prospective clients toward service exploration and contact.',
-        'Developed service-detail layouts that communicate technical capabilities, marketing deliverables, and business outcomes in an accessible format.',
-        'Built a structured process section covering discovery and analysis, strategy and planning, design and development, testing and launch, and ongoing growth and optimization.',
-        'Supported SEO-friendly page structure, readable content hierarchy, metadata-ready layouts, and performance-conscious frontend implementation.',
-        'Created a modern visual experience that reflects Markefy’s positioning as an AI-enabled digital partner for businesses seeking web, software, SEO, and advertising support.',
-    ],
-    approach:
-        'I approached the project as a conversion-focused agency website rather than a simple online brochure. The frontend was structured around reusable components, consistent spacing, responsive grids, clear typography, service cards, and focused calls to action. Content was organized so visitors can quickly understand what Markefy offers, how the team works, what type of businesses it supports, and how to make contact. The visual and technical decisions aimed to keep the website fast, professional, easy to scan, and credible across all screen sizes.',
-    outcome:
-        'The result is a polished digital presence for Markefy that brings its technology and marketing services into one coherent customer journey. The website supports the agency’s positioning around scalable software, high-performing websites, AI-powered SEO, and data-driven advertising while giving prospective clients straightforward routes to explore services and get in touch. The project strengthened my experience in agency-site architecture, responsive frontend implementation, conversion-oriented UI design, and communicating complex service offerings through a clear web experience.',
-},
+//     overview:
+//         'Markefy is a digital-services agency based in Bragadiru, Romania, providing web design and development, custom software and app development, AI-powered SEO optimization, paid advertising, and content and brand marketing. I worked on a modern, responsive agency website that communicates these services clearly and supports the company’s goal of helping startups, SMEs, and enterprise clients turn ideas into scalable digital products and measurable marketing growth.',
+//     challenge:
+//         'The challenge was to present a broad range of technical and marketing services in a way that feels clear, credible, and easy to navigate for prospective clients. The website needed to balance strong visual presentation with practical conversion paths, explain an end-to-end delivery process, remain responsive across devices, and make it simple for visitors to explore services, view results, understand the company, and initiate contact.',
+//     myRole:
+//         'I contributed to the frontend development and website implementation, focusing on responsive layouts, reusable page sections, service-focused content presentation, user-interface consistency, and a clear lead-generation journey. My work supported the agency’s online presence by translating its service offering, process, and digital-growth positioning into a polished web experience.',
+//     built: [
+//         'Built responsive website sections that present Markefy’s web development, software development, AI-powered SEO, paid advertising, and content-marketing services.',
+//         'Created a clear information architecture for the homepage, services, process, results, about, and contact pages.',
+//         'Implemented responsive layouts and reusable UI patterns that adapt across desktop, tablet, and mobile screens.',
+//         'Designed conversion-focused calls to action that guide prospective clients toward service exploration and contact.',
+//         'Developed service-detail layouts that communicate technical capabilities, marketing deliverables, and business outcomes in an accessible format.',
+//         'Built a structured process section covering discovery and analysis, strategy and planning, design and development, testing and launch, and ongoing growth and optimization.',
+//         'Supported SEO-friendly page structure, readable content hierarchy, metadata-ready layouts, and performance-conscious frontend implementation.',
+//         'Created a modern visual experience that reflects Markefy’s positioning as an AI-enabled digital partner for businesses seeking web, software, SEO, and advertising support.',
+//     ],
+//     approach:
+//         'I approached the project as a conversion-focused agency website rather than a simple online brochure. The frontend was structured around reusable components, consistent spacing, responsive grids, clear typography, service cards, and focused calls to action. Content was organized so visitors can quickly understand what Markefy offers, how the team works, what type of businesses it supports, and how to make contact. The visual and technical decisions aimed to keep the website fast, professional, easy to scan, and credible across all screen sizes.',
+//     outcome:
+//         'The result is a polished digital presence for Markefy that brings its technology and marketing services into one coherent customer journey. The website supports the agency’s positioning around scalable software, high-performing websites, AI-powered SEO, and data-driven advertising while giving prospective clients straightforward routes to explore services and get in touch. The project strengthened my experience in agency-site architecture, responsive frontend implementation, conversion-oriented UI design, and communicating complex service offerings through a clear web experience.',
+// },
 //n8n
   {
   slug: 'ai-social-media-automation',
@@ -299,6 +299,125 @@ export const projects = [
     'I approached the project as a content-first financial website with a strong focus on clarity, trust, and conversion. The interface uses clear content hierarchy: users can first browse top-rated firms and active offers, then move into detailed reviews, comparisons, and educational resources as needed. Reusable cards, sections, buttons, and page layouts keep the design consistent as new prop firms, reviews, and promotions are added. The responsive structure ensures that trading information, ratings, and calls to action remain readable and accessible across screen sizes.',
   outcome:
     'The completed website provides a structured destination for traders to research proprietary trading firms, compare options, access promotions, and understand common prop-trading concepts before choosing a funding provider. It transforms a complex research process into a clearer browsing journey by combining firm listings, ratings, comparisons, reviews, discounts, testimonials, and educational content in one platform. The project strengthened my experience in responsive frontend development, component-based UI design, content-heavy website architecture, conversion-focused layouts, and designing for financial-information audiences.',
+},
+
+{
+    slug: 'treasury-management-system',
+    title: 'Treasury Management System',
+    category: 'Custom Software',
+    year: '2025',
+    role: 'Full-Stack Developer',
+    imageUrl: '/projects/treasury.png',
+    imageAlt: 'Treasury Management System dashboard for university financial operations',
+
+    description:
+        'Developed a centralised financial management platform for Information Technology University (ITU) to streamline budgeting, taxation, expenses, grants, and payroll operations. The system replaces fragmented spreadsheet-based processes with structured digital workflows and centralised financial records.',
+
+    tags: [
+        'React.js',
+        'Node.js',
+        'Express.js',
+        'MySQL',
+        'REST APIs',
+        'Role-Based Access Control'
+    ],
+
+    featured: true,
+    liveUrl: '',
+    sourceUrl: '',
+
+    overview:
+        'The Treasury Management System was developed as my Final Year Project at Information Technology University (ITU), Lahore. The objective was to build a centralised platform for managing the university’s financial operations and improving the organisation of financial data across different departments. The system brings essential treasury functions, including taxation, budgeting, expense management, grants, and payroll, into a unified application. It provides a structured environment for handling financial records, managing departmental activities, and generating reports.',
+
+    challenge:
+        'University financial operations involve multiple departments, each responsible for different administrative and financial activities. Managing these processes through disconnected spreadsheets and manual record-keeping can make it difficult to maintain consistent data, coordinate departmental workflows, and access consolidated financial information. The main challenge was to design a system capable of supporting different financial operations while maintaining organised records, controlled access, and a consistent workflow across the university.',
+
+    myRole:
+        'I worked on developing the system as part of my undergraduate Final Year Project. My responsibilities covered full-stack application development, including frontend implementation, backend business logic, database design, API development, and application workflows. I worked with React.js to build the user interface, Node.js and Express.js to implement backend functionality, and MySQL to structure and manage the application data.',
+
+    built: [
+        'Developed a centralised financial management platform covering taxation, budgeting, expenses, grants, and payroll operations.',
+        'Built responsive frontend interfaces using React.js to support financial management activities and departmental workflows.',
+        'Implemented backend services using Node.js and Express.js to handle business logic, data processing, and application operations.',
+        'Designed and managed a MySQL relational database to organise financial records and maintain structured data across system modules.',
+        'Implemented authentication and role-based access control to support different users and departmental responsibilities.',
+        'Developed financial reporting functionality to provide visibility into budgets, expenses, and other financial activities.',
+        'Organised the application into modular workflows supporting finance, human resources, procurement, and university departments.',
+        'Integrated frontend and backend functionality through APIs to enable communication between application modules and the database.'
+    ],
+
+    approach:
+        'I followed a modular full-stack development approach, separating the frontend, backend, and database responsibilities. React.js was used to develop the user-facing application, while Node.js and Express.js handled server-side logic and API functionality. MySQL provided relational data storage for financial records and operational information. The application was organised around individual financial and administrative modules so that different university workflows could be managed within a consistent system. Authentication and access permissions were incorporated to help ensure that users could access the functionality relevant to their responsibilities.',
+
+    outcome:
+        'The completed project delivered a centralised financial management application designed around the operational requirements of Information Technology University. It brought multiple financial and administrative workflows into one platform, providing a more organised approach to managing university financial information. The project gave me practical experience in designing relational databases, developing REST APIs, implementing authentication and access controls, and building a multi-module full-stack application from the ground up.'
+},
+
+
+{
+    slug: 'rvspk',
+    title: 'Right Vision Securities (RVSPK)',
+    category: 'Web Apps',
+    year: '2026',
+    role: 'Full-Stack Developer',
+
+    imageUrl: '/projects/rvspk.png',
+    imageAlt: 'Right Vision Securities public website and administrative dashboard',
+
+    description:
+        'Developed a complete full-stack brokerage platform for Right Vision Securities, combining a professional public-facing website with custom admin and super-admin dashboards. Implemented backend APIs, PostgreSQL database management, role-based access control, and a centralized report management system.',
+
+    tags: [
+        'React.js',
+        'Vite',
+        'JavaScript',
+        'Node.js',
+        'Express.js',
+        'PostgreSQL',
+        'REST APIs',
+        'Authentication',
+        'Role-Based Access Control',
+        'Nginx',
+        'PM2'
+    ],
+
+    featured: true,
+
+    liveUrl: 'https://rvspk.com',
+    sourceUrl: '',
+
+    overview:
+        'Right Vision Securities (RVSPK) is a brokerage business platform developed to establish a professional digital presence while supporting internal business operations. The project goes beyond a conventional corporate website by combining a responsive public-facing interface with a complete backend infrastructure and dedicated administrative dashboards. The platform enables authorized staff to manage users and business reports through centralized interfaces, supported by a PostgreSQL database and custom REST APIs. The solution provides the business with an integrated digital platform for presenting its services and managing essential operational activities.',
+
+    challenge:
+        'The primary challenge was developing a complete business application rather than simply building a static corporate website. The platform required separate public-facing and administrative interfaces, a structured backend architecture, secure authentication, and different permission levels for administrative users. Another important challenge was implementing reliable data management and document handling, particularly for uploading and managing PDF reports. The application also needed to be configured for production deployment, ensuring that the frontend, backend, database, and server infrastructure worked together reliably.',
+
+    myRole:
+        'Worked as the Full-Stack Developer, taking responsibility for the development and implementation of the platform across its frontend and backend. Developed the public-facing website and administrative dashboards using React.js, implemented server-side functionality and REST APIs using Node.js and Express.js, and structured the PostgreSQL database for application data and report management. Also worked on authentication, role-based authorization, file upload functionality, API integration, server configuration, and production deployment. Managed the development process from application architecture and implementation through to deployment on a VPS.',
+
+    built: [
+        'Developed a responsive public-facing corporate website presenting Right Vision Securities, its brokerage services, and business information.',
+
+        'Built dedicated administrative dashboards for admin and super-admin users, providing controlled access to internal platform management functionality.',
+
+        'Implemented role-based access control to distinguish administrative permissions and restrict functionality according to user roles.',
+
+        'Developed a custom backend using Node.js and Express.js, implementing RESTful APIs to handle frontend requests, application operations, and database interactions.',
+
+        'Designed and implemented PostgreSQL database structures, including user and report management tables, UUID-based identifiers, and relational data handling.',
+
+        'Developed a centralized report management system supporting PDF uploads and report administration, allowing authorized users to manage business documents through the dashboard.',
+
+        'Implemented backend file handling using Multer, including upload configuration and file size restrictions.',
+
+        'Configured the production environment on a VPS using Nginx as a reverse proxy and PM2 for backend process management, connecting the frontend and backend through the production domain.'
+    ],
+
+    approach:
+        'Architected the application using a separated frontend and backend structure to maintain modularity and simplify future development. React.js with Vite was used to build the responsive user interface, including the public website and administrative dashboards. The backend was developed with Node.js and Express.js, exposing REST APIs for communication between the frontend, application logic, and database. PostgreSQL was selected for structured relational data management, covering users, administrative roles, and reports. Authentication and role-based authorization were implemented to control access to protected administrative functionality. For document management, Multer was used to handle PDF uploads on the server. The application was deployed to a VPS, with Nginx configured to serve the frontend and forward API requests to the Express backend, while PM2 managed the backend application process.',
+
+    outcome:
+        'Successfully delivered a full-stack brokerage business platform integrating a professional corporate website, custom administrative dashboards, backend services, and a relational database. The completed solution provides centralized user and report management, controlled administrative access, and dedicated tools for handling business documents. By developing both the public-facing experience and the underlying application infrastructure, the project established a maintainable foundation for the company’s digital operations and future platform enhancements.'
 },
 ];
 
